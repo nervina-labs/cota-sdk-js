@@ -66,8 +66,8 @@ export interface UpdateReq extends SmtReq {
 
 export interface GetCotaReq extends SmtReq {
   lockScript: Bytes
-  page: number,
-  pageSize: number,
+  page: number
+  pageSize: number
 }
 
 export interface IsClaimedReq extends SmtReq {

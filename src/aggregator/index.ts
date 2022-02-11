@@ -1,6 +1,16 @@
 import axios from 'axios'
 import { toCamelcase, toSnakeCase } from '../utils/case-parser'
-import { ClaimReq, DefineReq, GetCotaReq, IsClaimedReq, MintReq, SmtReq, TransferReq, UpdateReq, WithdrawalReq } from '../types/request'
+import {
+  ClaimReq,
+  DefineReq,
+  GetCotaReq,
+  IsClaimedReq,
+  MintReq,
+  SmtReq,
+  TransferReq,
+  UpdateReq,
+  WithdrawalReq,
+} from '../types/request'
 import {
   ClaimResp,
   DefineResp,
@@ -21,7 +31,7 @@ export class Aggregator {
   private registryUrl: string
   private cotaUrl: string
 
-  constructor({registryUrl, cotaUrl}: {registryUrl: string, cotaUrl: string}) {
+  constructor({ registryUrl, cotaUrl }: { registryUrl: string; cotaUrl: string }) {
     this.registryUrl = registryUrl
     this.cotaUrl = cotaUrl
   }

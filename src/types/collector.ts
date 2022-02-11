@@ -1,4 +1,4 @@
-import { Hex } from ".";
+import { Hex } from '.'
 
 export interface IndexerCell {
   blockNumber: CKBComponents.BlockNumber
