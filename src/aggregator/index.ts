@@ -1,22 +1,16 @@
 import axios from 'axios'
 import { toCamelcase, toSnakeCase } from '../utils/case-parser'
+import { ClaimReq, DefineReq, MintReq, SmtReq, TransferReq, UpdateReq, WithdrawalReq } from '../types/request'
 import {
-  ClaimReq,
   ClaimResp,
-  DefineReq,
   DefineResp,
-  MintReq,
   MintResp,
   RegistryResp,
-  SmtReq,
   SmtResp,
-  TransferReq,
   TransferResp,
-  UpdateReq,
   UpdateResp,
-  WithdrawalReq,
   WithdrawalResp,
-} from './types'
+} from '../types/response'
 
 export class Aggregator {
   private registryUrl: string
