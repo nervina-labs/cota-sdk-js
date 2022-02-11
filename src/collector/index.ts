@@ -1,7 +1,7 @@
 import axios from 'axios'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 import { toCamelcase } from '../utils/case-parser'
-import { IndexerCell, CollectResult } from './types'
+import { IndexerCell, CollectResult } from '../types/collector'
 
 export class Collector {
   private ckbNodeUrl: string

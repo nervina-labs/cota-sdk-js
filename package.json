@@ -6,7 +6,10 @@
   "author": "duanyytop <duanyytop@gmail.com>",
   "license": "MIT",
   "main": "lib/index.js",
-  "types": "index.d.ts",
+  "types": "lib/index.d.ts",
+  "files": [
+    "/lib"
+  ],
   "scripts": {
     "build": "rm -rf lib && tsc",
     "lint": "eslint src/**/*.ts --fix"

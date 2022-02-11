@@ -16,7 +16,6 @@ import {
   WithdrawalResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
-import { convert } from './convertor'
 
 export class Aggregator {
   private registryUrl: string
@@ -102,3 +101,9 @@ export class Aggregator {
     return (await this.baseRPC('is_claimed', req)) as Promise<IsClaimedResp>
   }
 }
+
+const convert = (req: GetCotaReq) => ({
+  lockScript: req.lockScript,
+  page: req.page.toString(),
+  pageSize: req.pageSize.toString(),
+})
