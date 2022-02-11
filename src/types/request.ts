@@ -63,3 +63,15 @@ export interface UpdateReq extends SmtReq {
     characteristic: Byte20
   }[]
 }
+
+export interface GetCotaReq extends SmtReq {
+  lockScript: Bytes
+  page: number,
+  pageSize: number,
+}
+
+export interface IsClaimedReq extends SmtReq {
+  lockHash: Byte32
+  cotaId: Byte20
+  tokenIndex: Byte4
+}

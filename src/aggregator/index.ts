@@ -1,9 +1,13 @@
 import axios from 'axios'
 import { toCamelcase, toSnakeCase } from '../utils/case-parser'
-import { ClaimReq, DefineReq, MintReq, SmtReq, TransferReq, UpdateReq, WithdrawalReq } from '../types/request'
+import { ClaimReq, DefineReq, GetCotaReq, IsClaimedReq, MintReq, SmtReq, TransferReq, UpdateReq, WithdrawalReq } from '../types/request'
 import {
   ClaimResp,
   DefineResp,
+  GetHoldResp,
+  GetMintResp,
+  GetWithdrawalResp,
+  IsClaimedResp,
   MintResp,
   RegistryResp,
   SmtResp,
@@ -11,17 +15,19 @@ import {
   UpdateResp,
   WithdrawalResp,
 } from '../types/response'
+import { Byte32 } from '../types/common'
+import { convert } from './convertor'
 
 export class Aggregator {
   private registryUrl: string
   private cotaUrl: string
 
-  constructor(registryUrl: string, cotaUrl: string) {
+  constructor({registryUrl, cotaUrl}: {registryUrl: string, cotaUrl: string}) {
     this.registryUrl = registryUrl
     this.cotaUrl = cotaUrl
   }
 
-  private async generateCotaSmt(method: string, req: SmtReq, url = this.cotaUrl): Promise<SmtResp | undefined> {
+  private async baseRPC(method: string, req: SmtReq, url = this.cotaUrl): Promise<SmtResp | undefined> {
     let payload = {
       id: 1,
       jsonrpc: '2.0',
@@ -52,31 +58,47 @@ export class Aggregator {
     }
   }
 
-  async generateRegisterCotaSmt(lockHashes: CKBComponents.Hash[]): Promise<RegistryResp> {
-    return (await this.generateCotaSmt('register_cota_cells', lockHashes, this.registryUrl)) as Promise<RegistryResp>
+  async generateRegisterCotaSmt(lockHashes: Byte32[]): Promise<RegistryResp> {
+    return (await this.baseRPC('register_cota_cells', lockHashes, this.registryUrl)) as Promise<RegistryResp>
   }
 
   async generateDefineCotaSmt(define: DefineReq): Promise<DefineResp> {
-    return (await this.generateCotaSmt('generate_define_cota_smt', define)) as Promise<DefineResp>
+    return (await this.baseRPC('generate_define_cota_smt', define)) as Promise<DefineResp>
   }
 
   async generateMintCotaSmt(mint: MintReq): Promise<MintResp> {
-    return (await this.generateCotaSmt('generate_mint_cota_smt', mint)) as Promise<MintResp>
+    return (await this.baseRPC('generate_mint_cota_smt', mint)) as Promise<MintResp>
   }
 
   async generateWithdrawalCotaSmt(withdrawal: WithdrawalReq): Promise<WithdrawalResp> {
-    return (await this.generateCotaSmt('generate_withdrawal_cota_smt', withdrawal)) as Promise<WithdrawalResp>
+    return (await this.baseRPC('generate_withdrawal_cota_smt', withdrawal)) as Promise<WithdrawalResp>
   }
 
   async generateTransferCotaSmt(transfer: TransferReq): Promise<TransferResp> {
-    return (await this.generateCotaSmt('generate_transfer_cota_smt', transfer)) as Promise<TransferResp>
+    return (await this.baseRPC('generate_transfer_cota_smt', transfer)) as Promise<TransferResp>
   }
 
   async generateClaimCotaSmt(claim: ClaimReq): Promise<ClaimResp> {
-    return (await this.generateCotaSmt('generate_claim_cota_smt', claim)) as Promise<ClaimResp>
+    return (await this.baseRPC('generate_claim_cota_smt', claim)) as Promise<ClaimResp>
   }
 
   async generateUpdateCotaSmt(update: UpdateReq): Promise<UpdateResp> {
-    return (await this.generateCotaSmt('generate_update_cota_smt', update)) as Promise<UpdateResp>
+    return (await this.baseRPC('generate_update_cota_smt', update)) as Promise<UpdateResp>
+  }
+
+  async getHoldCotaNft(req: GetCotaReq): Promise<GetHoldResp> {
+    return (await this.baseRPC('get_hold_cota_nft', convert(req))) as Promise<GetHoldResp>
+  }
+
+  async getWithdrawCotaNft(req: GetCotaReq): Promise<GetWithdrawalResp> {
+    return (await this.baseRPC('get_withdraw_cota_nft', convert(req))) as Promise<GetWithdrawalResp>
+  }
+
+  async getMintCotaNft(req: GetCotaReq): Promise<GetMintResp> {
+    return (await this.baseRPC('get_mint_cota_nft', convert(req))) as Promise<GetMintResp>
+  }
+
+  async isClaimed(req: IsClaimedReq): Promise<IsClaimedResp> {
+    return (await this.baseRPC('is_claimed', req)) as Promise<IsClaimedResp>
   }
 }

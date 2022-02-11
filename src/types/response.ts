@@ -1,4 +1,4 @@
-import { Byte32, Bytes } from './common'
+import { Byte, Byte20, Byte32, Byte4, Bytes } from './common'
 
 export interface SmtResp {}
 
@@ -35,4 +35,41 @@ export interface ClaimResp extends SmtResp {
 export interface UpdateResp extends SmtResp {
   smtRootHash: Byte32
   updateSmtEntry: Bytes
+}
+
+export interface GetHoldResp extends SmtResp {
+  total: number
+  pageSize: number
+  nfts: {
+    cotaId: Byte20
+    index: Byte4
+    configure: Byte
+    state: Byte
+    characteristic: Byte20
+    name: string
+    description: string
+    image: string
+  }[]
+}
+
+export type GetWithdrawalResp = GetHoldResp
+
+export interface GetMintResp {
+  total: number
+  pageSize: number
+  nfts: {
+    cotaId: Byte20
+    tokenIndex: Byte4
+    configure: Byte
+    state: Byte
+    characteristic: Byte20
+    receiver: Bytes
+    name: string
+    description: string
+    image: string
+  }[]
+}
+
+export interface IsClaimedResp {
+  claimed: boolean
 }
