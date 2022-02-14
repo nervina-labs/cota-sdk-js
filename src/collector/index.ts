@@ -7,9 +7,13 @@ export class Collector {
   private ckbNodeUrl: string
   private ckbIndexerUrl: string
 
-  constructor(ckbNodeUrl: string, ckbIndexerUrl: string) {
+  constructor({ ckbNodeUrl, ckbIndexerUrl }: { ckbNodeUrl: string; ckbIndexerUrl: string }) {
     this.ckbNodeUrl = ckbNodeUrl
     this.ckbIndexerUrl = ckbIndexerUrl
+  }
+
+  getCkbRpc() {
+    return new CKB(this.ckbNodeUrl).rpc
   }
 
   async getCells(lock: CKBComponents.Script, type?: CKBComponents.Script): Promise<IndexerCell[] | undefined> {
