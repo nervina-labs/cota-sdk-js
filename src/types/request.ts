@@ -75,3 +75,9 @@ export interface IsClaimedReq extends SmtReq {
   cotaId: Byte20
   tokenIndex: Byte4
 }
+
+export interface GetCotaSenderReq extends SmtReq {
+  lockScript: Bytes
+  cotaId: Byte20
+  tokenIndex: Byte4
+}

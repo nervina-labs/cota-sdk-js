@@ -10,6 +10,7 @@ import {
   TransferReq,
   UpdateReq,
   WithdrawalReq,
+  GetCotaSenderReq,
 } from '../types/request'
 import {
   ClaimResp,
@@ -24,6 +25,7 @@ import {
   TransferResp,
   UpdateResp,
   WithdrawalResp,
+  GetCotaSenderResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -109,6 +111,10 @@ export class Aggregator {
 
   async isClaimed(req: IsClaimedReq): Promise<IsClaimedResp> {
     return (await this.baseRPC('is_claimed', req)) as Promise<IsClaimedResp>
+  }
+
+  async getCotaNftSender(req: GetCotaSenderReq): Promise<GetCotaSenderResp> {
+    return (await this.baseRPC('get_cota_nft_sender', req)) as Promise<GetCotaSenderResp>
   }
 }
 
