@@ -1,14 +1,9 @@
-import { Byte, Byte20, Byte4, Bytes } from '.'
+import { Byte20, MintWithdrawal } from '.'
 import { Aggregator, Collector } from '..'
 
 export interface MintCotaInfo {
   cotaId: Byte20
-  withdrawals: {
-    tokenIndex: Byte4
-    state: Byte
-    characteristic: Byte20
-    toLockScript: Bytes
-  }[]
+  withdrawals: MintWithdrawal[]
 }
 
 export interface Service {

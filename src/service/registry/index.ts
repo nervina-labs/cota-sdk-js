@@ -1,7 +1,4 @@
-import {
-  scriptToHash,
-  serializeWitnessArgs,
-} from '@nervosnetwork/ckb-sdk-utils'
+import { scriptToHash, serializeWitnessArgs } from '@nervosnetwork/ckb-sdk-utils'
 import { Service } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
 import { append0x, remove0x } from '../../utils/hex'
@@ -34,11 +31,11 @@ const generateCotaOutputs = async (
 }
 
 export const generateRegisterCotaTx = async (
-    service: Service, 
-    cotaLocks: CKBComponents.Script[], 
-    lock: CKBComponents.Script, 
-    fee = FEE
-  ): Promise<CKBComponents.RawTransactionToSign> => {
+  service: Service,
+  cotaLocks: CKBComponents.Script[],
+  lock: CKBComponents.Script,
+  fee = FEE,
+): Promise<CKBComponents.RawTransactionToSign> => {
   const cotaCount = BigInt(cotaLocks.length)
   const registryLock = TestnetDeployment.AlwaysSuccessLockScript
   const registryType = TestnetDeployment.RegistryTypeScript
@@ -48,7 +45,11 @@ export const generateRegisterCotaTx = async (
   }
   let registryCell = registryCells[0]
   const liveCells = await service.collector.getCells(lock)
-  const { inputs: normalInputs, capacity } = await service.collector.collectInputs(liveCells, COTA_CELL_CAPACITY * cotaCount, fee)
+  const { inputs: normalInputs, capacity } = await service.collector.collectInputs(
+    liveCells,
+    COTA_CELL_CAPACITY * cotaCount,
+    fee,
+  )
 
   let inputs = [
     {
@@ -80,10 +81,8 @@ export const generateRegisterCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-      i > 0 ? '0x' : serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' }),
-    )
+    i > 0 ? '0x' : serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' }),
+  )
   console.log(JSON.stringify(rawTx))
   return rawTx
 }
-
-

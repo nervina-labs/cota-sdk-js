@@ -12,10 +12,16 @@ const generateCotaId = (firstInput: CKBComponents.CellInput, definesIndex: numbe
   return `0x${s.digest('hex').slice(0, 40)}`
 }
 
-export const generateDefineCotaTx = async (service: Service, cotaLock: CKBComponents.Script, total: number, confiure: Byte, fee = FEE) => {
+export const generateDefineCotaTx = async (
+  service: Service,
+  cotaLock: CKBComponents.Script,
+  total: number,
+  confiure: Byte,
+  fee = FEE,
+) => {
   const cotaType = TestnetDeployment.CotaTypeScript
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
-   if (!cotaCells || cotaCells.length === 0) {
+  if (!cotaCells || cotaCells.length === 0) {
     throw new Error("Cota cell doesn't exist")
   }
   const cotaCell = cotaCells[0]
@@ -58,5 +64,5 @@ export const generateDefineCotaTx = async (service: Service, cotaLock: CKBCompon
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
     i > 0 ? '0x' : { lock: '', inputType: `0x01${defineSmtEntry}`, outputType: '' },
   )
-  return {rawTx, cotaId}
+  return { rawTx, cotaId }
 }

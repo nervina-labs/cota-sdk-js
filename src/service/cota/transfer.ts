@@ -1,14 +1,14 @@
 import { scriptToHash, serializeOutPoint, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
-import { Service, TransferReq, Withdrawal } from '../..'
+import { Service, TransferReq, TransferWithdrawal } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
 import { append0x } from '../../utils/hex'
 
 export const transferCotaNFT = async (
-  service: Service, 
-  cotaLock: CKBComponents.Script, 
+  service: Service,
+  cotaLock: CKBComponents.Script,
   withdrawalLock: CKBComponents.Script,
-  transfers: Withdrawal[],
-  fee = FEE
+  transfers: TransferWithdrawal[],
+  fee = FEE,
 ) => {
   const cotaType = TestnetDeployment.CotaTypeScript
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)

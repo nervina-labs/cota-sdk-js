@@ -6,11 +6,6 @@
     "declaration": true,
     "moduleResolution": "node"
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "example"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "example"]
 }

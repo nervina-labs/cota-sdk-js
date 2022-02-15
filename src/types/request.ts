@@ -24,7 +24,7 @@ export interface MintReq extends SmtReq {
   withdrawals: MintWithdrawal[]
 }
 
-export interface Withdrawal {
+export interface TransferWithdrawal {
   cotaId: Byte20
   tokenIndex: Byte4
   toLockScript: Bytes
@@ -33,14 +33,14 @@ export interface Withdrawal {
 export interface WithdrawalReq extends SmtReq {
   lockHash: CKBComponents.Hash
   outPoint: Byte24
-  withdrawals: Withdrawal[]
+  withdrawals: TransferWithdrawal[]
 }
 
 export interface TransferReq extends SmtReq {
   lockScript: Bytes
   withdrawalLockHash: CKBComponents.Hash
   transferOutPoint: Byte24
-  transfers: Withdrawal[]
+  transfers: TransferWithdrawal[]
 }
 
 export interface Claim {

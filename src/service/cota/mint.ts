@@ -1,13 +1,18 @@
 import { scriptToHash, serializeOutPoint } from '@nervosnetwork/ckb-sdk-utils'
-import { Byte, Byte20, Byte4, Bytes, MintReq, Service } from '../..';
+import { Byte, Byte20, Byte4, Bytes, MintReq, Service } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
-import { MintCotaInfo } from '../../types/service';
+import { MintCotaInfo } from '../../types/service'
 import { append0x } from '../../utils'
 
-export const generateMintCotaTx = async (service: Service, cotaLock: CKBComponents.Script, mintCotaInfo: MintCotaInfo, fee = FEE) => {
+export const generateMintCotaTx = async (
+  service: Service,
+  cotaLock: CKBComponents.Script,
+  mintCotaInfo: MintCotaInfo,
+  fee = FEE,
+) => {
   const cotaType = TestnetDeployment.CotaTypeScript
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
-   if (!cotaCells || cotaCells.length === 0) {
+  if (!cotaCells || cotaCells.length === 0) {
     throw new Error("Cota cell doesn't exist")
   }
   const cotaCell = cotaCells[0]

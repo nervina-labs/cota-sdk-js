@@ -2,7 +2,12 @@ import { scriptToHash } from '@nervosnetwork/ckb-sdk-utils'
 import { CotaNft, Service, UpdateReq } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
 
-export const updateCotaNFT = async (service: Service, cotaLock: CKBComponents.Script, cotaNfts: CotaNft[], fee = FEE) => {
+export const updateCotaNFT = async (
+  service: Service,
+  cotaLock: CKBComponents.Script,
+  cotaNfts: CotaNft[],
+  fee = FEE,
+) => {
   const cotaType = TestnetDeployment.CotaTypeScript
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
   if (!cotaCells || cotaCells.length === 0) {

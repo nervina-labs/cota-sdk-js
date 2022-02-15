@@ -3,15 +3,15 @@ import { ClaimReq, Service, Claim } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
 
 export const generateClaimCotaTx = async (
-  service: Service, 
-  cotaLock: CKBComponents.Script, 
+  service: Service,
+  cotaLock: CKBComponents.Script,
   withdrawalLock: CKBComponents.Script,
   claims: Claim[],
-  fee = FEE
+  fee = FEE,
 ) => {
   const cotaType = TestnetDeployment.CotaTypeScript
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
-   if (!cotaCells || cotaCells.length === 0) {
+  if (!cotaCells || cotaCells.length === 0) {
     throw new Error("Cota cell doesn't exist")
   }
   const cotaCell = cotaCells[0]
@@ -28,7 +28,7 @@ export const generateClaimCotaTx = async (
 
   const withdrawalLockHash = scriptToHash(withdrawalLock)
   const withdrawalCotaCells = await service.collector.getCells(withdrawalLock, cotaType)
-   if (!withdrawalCotaCells || withdrawalCotaCells.length === 0) {
+  if (!withdrawalCotaCells || withdrawalCotaCells.length === 0) {
     throw new Error("Withdrawal cota cell doesn't exist")
   }
   const withdrawalCotaCell = withdrawalCotaCells[0]
