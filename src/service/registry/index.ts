@@ -45,6 +45,7 @@ export const generateRegisterCotaTx = async (
   }
   let registryCell = registryCells[0]
   const liveCells = await service.collector.getCells(lock)
+  console.log(JSON.stringify(liveCells))
   const { inputs: normalInputs, capacity } = await service.collector.collectInputs(
     liveCells,
     COTA_CELL_CAPACITY * cotaCount,
@@ -80,9 +81,9 @@ export const generateRegisterCotaTx = async (
     outputsData,
     witnesses: [],
   }
-  rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' }),
-  )
+  const registryWitness = serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' })
+  const emptyWitness = { lock: '', inputType: '', outputType: '' }
+  rawTx.witnesses = rawTx.inputs.map((_, i) => (i === 0 ? registryWitness : i === 1 ? emptyWitness : '0x'))
   console.log(JSON.stringify(rawTx))
   return rawTx
 }

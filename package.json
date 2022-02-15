@@ -13,7 +13,7 @@
   "scripts": {
     "build": "rm -rf lib && tsc",
     "lint": "eslint src/**/*.ts --fix",
-    "clean": "prettier --write .",
+    "format": "prettier --write .",
     "check": "prettier --check .",
     "prepare": "husky install"
   },
