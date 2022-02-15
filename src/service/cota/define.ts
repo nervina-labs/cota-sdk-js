@@ -12,7 +12,7 @@ const generateCotaId = (firstInput: CKBComponents.CellInput, definesIndex: numbe
   return `0x${s.digest('hex').slice(0, 40)}`
 }
 
-export const generateDefineCotaTx = async (service: Service, cotaLock: CKBComponents.Script, total: number, confiure: Byte) => {
+export const generateDefineCotaTx = async (service: Service, cotaLock: CKBComponents.Script, total: number, confiure: Byte, fee = FEE) => {
   const cotaType = TestnetDeployment.CotaTypeScript
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
    if (!cotaCells || cotaCells.length === 0) {
@@ -27,7 +27,7 @@ export const generateDefineCotaTx = async (service: Service, cotaLock: CKBCompon
   ]
 
   const outputs = [cotaCell.output]
-  outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - FEE).toString(16)}`
+  outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const cotaId = generateCotaId(inputs[0], 0)
   console.info(`cotaId:  ${cotaId}`)
