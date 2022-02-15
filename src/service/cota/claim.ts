@@ -2,7 +2,7 @@ import { scriptToHash, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { ClaimReq, Service, Claim } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
 
-export const claimCotaNFT = async (
+export const generateClaimCotaTx = async (
   service: Service, 
   cotaLock: CKBComponents.Script, 
   withdrawalLock: CKBComponents.Script,
