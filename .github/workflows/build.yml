@@ -16,6 +16,6 @@ jobs:
       - name: Lint
         run: yarn lint
       - name: Prettier
-        run: yarn clean
+        run: yarn check
       - name: Build
         run: yarn build
