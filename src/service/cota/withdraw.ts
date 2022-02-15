@@ -1,10 +1,9 @@
 import { scriptToHash, serializeOutPoint } from '@nervosnetwork/ckb-sdk-utils'
-import { Byte, Byte20, Byte4, Bytes, MintReq, Service } from '../..';
+import { Service, Withdrawal, WithdrawalReq } from '../../types'
 import { FEE, TestnetDeployment } from '../../constants'
-import { MintCotaInfo } from '../../types/service';
 import { append0x } from '../../utils'
 
-export const generateMintCotaTx = async (service: Service, cotaLock: CKBComponents.Script, mintCotaInfo: MintCotaInfo, fee = FEE) => {
+export const generateWithdrawCotaTx = async (service: Service, cotaLock: CKBComponents.Script, withdrawals: Withdrawal[], fee = FEE) => {
   const cotaType = TestnetDeployment.CotaTypeScript
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
    if (!cotaCells || cotaCells.length === 0) {
@@ -17,23 +16,17 @@ export const generateMintCotaTx = async (service: Service, cotaLock: CKBComponen
       since: '0x0',
     },
   ]
-
   const outputs = [cotaCell.output]
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
-
-  const mintReq: MintReq = {
+  
+  const withdrawalReq: WithdrawalReq = {
     lockHash: scriptToHash(cotaLock),
-    cotaId: append0x(mintCotaInfo.cotaId),
     outPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
-    withdrawals: mintCotaInfo.withdrawals,
+    withdrawals: withdrawals
   }
-
-  const { smtRootHash, mintSmtEntry } = await service.aggregator.generateMintCotaSmt(mintReq)
-  const cotaCellData = `0x00${smtRootHash}`
-
-  const outputsData = [cotaCellData]
+  const { smtRootHash, withdrawalSmtEntry } = await service.aggregator.generateWithdrawalCotaSmt(withdrawalReq)
+  const outputsData = [`0x00${smtRootHash}`]
   const cellDeps = [TestnetDeployment.CotaTypeDep]
-
   const rawTx = {
     version: '0x0',
     cellDeps,
@@ -44,7 +37,7 @@ export const generateMintCotaTx = async (service: Service, cotaLock: CKBComponen
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: `0x02${mintSmtEntry}`, outputType: '' },
+    i > 0 ? '0x' : { lock: '', inputType: `0x03${withdrawalSmtEntry}`, outputType: '' },
   )
   return rawTx
 }
