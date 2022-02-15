@@ -5,7 +5,7 @@ export * from './request'
 export * from './response'
 export * from './collector'
 
-export interface Config {
+export interface Service {
   collector: Collector
   aggregator: Aggregator
 }
