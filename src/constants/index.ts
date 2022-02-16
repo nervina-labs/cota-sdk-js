@@ -11,7 +11,7 @@ export const TestnetDeployment = {
   CotaTypeScript: {
     codeHash: '0x89cd8003a0eaf8e65e0c31525b7d1d5c1becefd2ea75bb4cff87810ae37764d8',
     hashType: 'type',
-    args: '',
+    args: '0x',
   } as CKBComponents.Script,
 
   CotaTypeDep: {
