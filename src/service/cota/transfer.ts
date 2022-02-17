@@ -3,7 +3,7 @@ import { Service, TransferReq, TransferWithdrawal } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
 import { append0x } from '../../utils/hex'
 
-export const transferCotaNFT = async (
+export const generateTransferCotaTx = async (
   service: Service,
   cotaLock: CKBComponents.Script,
   withdrawalLock: CKBComponents.Script,
@@ -25,8 +25,8 @@ export const transferCotaNFT = async (
   const outputs = [cotaCell.output]
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
-  const cotaLockScript = serializeScript(withdrawalLock)
-  const withdrawalLockHash = scriptToHash(cotaLock)
+  const cotaLockScript = serializeScript(cotaLock)
+  const withdrawalLockHash = scriptToHash(withdrawalLock)
   const withdrawalCotaCells = await service.collector.getCells(withdrawalLock, cotaType)
   if (!withdrawalCotaCells || withdrawalCotaCells.length === 0) {
     throw new Error("Withdrawal cota cell doesn't exist")
