@@ -2,7 +2,7 @@ import { scriptToHash } from '@nervosnetwork/ckb-sdk-utils'
 import { CotaNft, Service, UpdateReq } from '../..'
 import { FEE, TestnetDeployment } from '../../constants'
 
-export const updateCotaNFT = async (
+export const generateUpdateCotaTx = async (
   service: Service,
   cotaLock: CKBComponents.Script,
   cotaNfts: CotaNft[],
