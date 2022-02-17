@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@nervosnetwork/ckb-sdk-core": "^0.101.0",
-    "@nervosnetwork/ckb-sdk-utils": "^0.101.0",
+    "@nervosnetwork/ckb-sdk-utils": "^0.102.0",
     "@nervosnetwork/ckb-types": "^0.102.0",
     "axios": "^0.26.0",
     "camelcase-keys": "^7.0.2"
