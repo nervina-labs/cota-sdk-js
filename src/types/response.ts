@@ -84,7 +84,6 @@ export interface IsClaimedResp {
   blockNumber: bigint
 }
 
-
 export interface GetCotaSenderResp {
   senderLockHash: Byte32
   blockNumber: bigint

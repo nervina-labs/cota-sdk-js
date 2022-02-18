@@ -54,14 +54,16 @@ export interface ClaimReq extends SmtReq {
   claims: Claim[]
 }
 
+export interface CotaNft {
+  cotaId: Byte20
+  tokenIndex: Byte4
+  state: Byte
+  characteristic: Byte20
+}
+
 export interface UpdateReq extends SmtReq {
   lockHash: Byte32
-  nfts: {
-    cotaId: Byte20
-    tokenIndex: Byte4
-    state: Byte
-    characteristic: Byte20
-  }[]
+  nfts: CotaNft[]
 }
 
 export interface GetCotaReq extends SmtReq {

@@ -7,9 +7,13 @@ export class Collector {
   private ckbNodeUrl: string
   private ckbIndexerUrl: string
 
-  constructor(ckbNodeUrl: string, ckbIndexerUrl: string) {
+  constructor({ ckbNodeUrl, ckbIndexerUrl }: { ckbNodeUrl: string; ckbIndexerUrl: string }) {
     this.ckbNodeUrl = ckbNodeUrl
     this.ckbIndexerUrl = ckbIndexerUrl
+  }
+
+  getCkb() {
+    return new CKB(this.ckbNodeUrl)
   }
 
   async getCells(lock: CKBComponents.Script, type?: CKBComponents.Script): Promise<IndexerCell[] | undefined> {
@@ -60,7 +64,7 @@ export class Collector {
       throw Error('Get cells error')
     } else {
       console.log(JSON.stringify(response))
-      return toCamelcase(response.result)
+      return toCamelcase(response.result.objects)
     }
   }
 
