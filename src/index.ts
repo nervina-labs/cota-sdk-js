@@ -1,6 +1,8 @@
 export { Aggregator } from './aggregator'
-export * from './types/index'
-
 export { Collector } from './collector'
-export { IndexerCell, CollectResult } from './types/collector'
+
+export * from './types/index'
 export * from './constants'
+export * from './service/registry'
+export * from './service/cota'
+export * from './utils'

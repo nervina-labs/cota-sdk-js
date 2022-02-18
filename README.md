@@ -1,10 +1,13 @@
 # cota-sdk-js
 
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/nervina-labs/cota-sdk-js/blob/develop/LICENSE)
+[![CI](https://github.com/nervina-labs/cota-sdk-js/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/nervina-labs/cota-sdk-js/actions)
+
 JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-aggregator-standard-for-extremely-low-cost-nfts-and-fts/6338).
 
 ## Feature
 
-- Provide methods for [Aggregator](https://github.com/nervina-labs/cota-aggregator) RPC APIs
+- Provide methods for [cota-aggregator](https://github.com/nervina-labs/cota-aggregator) and [cota-registry-aggregator](https://github.com/nervina-labs/cota-registry-aggregator) RPC APIs
 - Provide methods to generate CoTA operating transactions
 
 ## Examples
