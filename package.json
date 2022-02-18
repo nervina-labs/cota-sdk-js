@@ -1,10 +1,16 @@
 {
-  "name": "cota-sdk-js",
+  "name": "@nervina-labs/cota-sdk",
   "version": "0.1.0",
   "description": "The SDK of CoTA",
   "repository": "git@github.com:nervina-labs/cota-sdk-js.git",
   "author": "duanyytop <duanyytop@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nervina-labs/cota-sdk-js/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
@@ -39,5 +45,6 @@
     "ts-node": "10.5.0",
     "tslib": "2.3.1",
     "typescript": "4.5.5"
-  }
+  },
+  "homepage": "https://github.com/nervina-labs/cota-sdk-js#readme"
 }
