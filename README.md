@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/nervina-labs/cota-sdk-js/blob/develop/LICENSE)
 [![CI](https://github.com/nervina-labs/cota-sdk-js/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/nervina-labs/cota-sdk-js/actions)
+[![NPM](https://img.shields.io/npm/v/@nervina-labs/cota-sdk/latest.svg)](https://www.npmjs.com/package/@nervina-labs/cota-sdk)
 
 JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-aggregator-standard-for-extremely-low-cost-nfts-and-fts/6338).
 
