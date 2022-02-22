@@ -14,7 +14,8 @@ JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-agg
 ## Examples
 
 - [aggregator example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/aggregator.ts): Fetch CoTA NFT data and [SMT](https://github.com/nervosnetwork/sparse-merkle-tree) data from Aggregator server
-- [registry example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/define.ts): Generate defining CoTA cells transaction
+- [registry example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/define.ts): Generate registering CoTA cells transaction
+- [define example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/define.ts): Generate defining CoTA cells transaction
 - [mint example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/mint.ts): Generate minting CoTA NFT transaction
 - [claim example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/claim.ts): Generate claiming CoTA NFT transaction
 - [withdraw example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/withdraw.ts): Generate withdrawing CoTA NFT transaction
