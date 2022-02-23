@@ -26,8 +26,8 @@ const run = async () => {
       cotaId: '0x1deb31f603652bf59ff5027b522e1d81c288b72f',
       tokenIndex: '0x00000000',
       state: '0x00',
-      characteristic: '0x0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a'
-    }
+      characteristic: '0x0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a',
+    },
   ]
 
   let rawTx = await generateUpdateCotaTx(service, cotaLock, cotaNfts)

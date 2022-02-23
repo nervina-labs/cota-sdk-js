@@ -20,7 +20,7 @@ const run = async () => {
   }
   const ckb = service.collector.getCkb()
   const defineLock = addressToScript(TEST_ADDRESS)
-  let {rawTx, cotaId} = await generateDefineCotaTx(service, defineLock, 100, "0x00")
+  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 100, '0x00')
   console.log(`cotaId: ${cotaId}`)
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
