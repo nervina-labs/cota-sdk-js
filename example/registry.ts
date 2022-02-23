@@ -1,7 +1,7 @@
 import { addressToScript, rawTransactionToHash, scriptToHash, serializeWitnessArgs } from '@nervosnetwork/ckb-sdk-utils'
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
-import { TestnetDeployment } from '../src/constants'
+import { getAlwaysSuccessLock } from '../src/constants'
 import { generateRegisterCotaTx } from '../src/service/registry'
 import { Service } from '../src'
 import CKB from '@nervosnetwork/ckb-sdk-core'
@@ -27,7 +27,7 @@ const run = async () => {
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
 
-  const registryLock = TestnetDeployment.AlwaysSuccessLockScript
+  const registryLock = getAlwaysSuccessLock(false)
 
   let keyMap = new Map<string, string>()
   keyMap.set(scriptToHash(registryLock), '')

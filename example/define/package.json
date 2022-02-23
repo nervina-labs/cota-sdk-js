@@ -1,0 +1,11 @@
+{
+  "name": "define-example",
+  "version": "1.0.0",
+  "description": "The example of defining cota nft",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@nervosnetwork/ckb-sdk-utils": "^0.102.0",
+    "@nervina-labs/cota-sdk": "0.1.0"
+  }
+}

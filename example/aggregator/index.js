@@ -1,4 +1,4 @@
-const { Aggregator } = require('../lib/aggregator')
+const { Aggregator } = require('@nervina-labs/cota-sdk')
 
 const run = async () => {
   const aggregator = new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' })

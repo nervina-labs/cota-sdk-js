@@ -28,7 +28,7 @@ const run = async () => {
     {
       cotaId: '0x1deb31f603652bf59ff5027b522e1d81c288b72f',
       tokenIndex: '0x00000001',
-      toLockScript: serializeScript(addressToScript(OTHER_ADDRESS))
+      toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
     },
   ]
   let rawTx = await generateTransferCotaTx(service, cotaLock, withdrawLock, transfers)

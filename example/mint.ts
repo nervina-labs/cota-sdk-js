@@ -23,8 +23,8 @@ const run = async () => {
   const mintLock = addressToScript(TEST_ADDRESS)
 
   const mintCotaInfo: MintCotaInfo = {
-    cotaId: "0x1deb31f603652bf59ff5027b522e1d81c288b72f",
-    withdrawals:  [
+    cotaId: '0x1deb31f603652bf59ff5027b522e1d81c288b72f',
+    withdrawals: [
       {
         tokenIndex: '0x00000000',
         state: '0x00',
@@ -37,7 +37,7 @@ const run = async () => {
         characteristic: '0xa505050505050505050505050505050505050505',
         toLockScript: serializeScript(addressToScript(RECEIVER_ADDRESS)),
       },
-    ]
+    ],
   }
   let rawTx = await generateMintCotaTx(service, mintLock, mintCotaInfo)
 
