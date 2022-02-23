@@ -14,24 +14,24 @@ const run = async () => {
   }
   const ckb = service.collector.getCkb()
   const defineLock = addressToScript(TEST_ADDRESS)
-  let {rawTx, cotaId} = await generateDefineCotaTx(service, defineLock, 100, "0x00")
+  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 100, '0x00')
   console.log(`cotaId: ${cotaId}`)
   const flashsingerDep: CKBComponents.CellDep = {
     outPoint: {
-      txHash: "0xb66776ff3244033fcd15312ae8b17d384c11bebbb923fce3bd896d89f4744d48",
-      index: "0x0",
+      txHash: '0xb66776ff3244033fcd15312ae8b17d384c11bebbb923fce3bd896d89f4744d48',
+      index: '0x0',
     },
-    depType: "depGroup"
+    depType: 'depGroup',
   }
   rawTx.cellDeps.push(flashsingerDep)
-  rawTx.witnesses = rawTx.witnesses.map(witness => witness !== '0x' ? serializeWitnessArgs(witness) : '0x')
+  rawTx.witnesses = rawTx.witnesses.map(witness => (witness !== '0x' ? serializeWitnessArgs(witness) : '0x'))
 
   let signedTx = rawTx
   rawTx = toSnakeCase(rawTx)
   console.log(JSON.stringify(rawTx))
 
   // TODO: Add witnesses signed by flashsigner
-  signedTx.witnesses = ["flashsigner-signed-witness"]
+  signedTx.witnesses = ['flashsigner-signed-witness']
 
   console.log(JSON.stringify(signedTx))
   let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')

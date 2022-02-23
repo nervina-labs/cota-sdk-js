@@ -6,7 +6,7 @@ const {
 } = require('@nervosnetwork/ckb-sdk-utils')
 const { Collector } = require('../lib/collector')
 const { Aggregator } = require('../lib/aggregator')
-const { TestnetDeployment } = require('../lib/constants')
+const { getAlwaysSuccessLock } = require('../lib/constants')
 const { generateRegisterCotaTx } = require('../lib/service/registry')
 const signWitnesses = require('@nervosnetwork/ckb-sdk-core/lib/signWitnesses')
 
@@ -30,7 +30,7 @@ const run = async () => {
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
 
-  const registryLock = TestnetDeployment.AlwaysSuccessLockScript
+  const registryLock = getAlwaysSuccessLock(false)
 
   let keyMap = new Map()
   keyMap.set(scriptToHash(registryLock), '')

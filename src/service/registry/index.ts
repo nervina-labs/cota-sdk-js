@@ -1,6 +1,13 @@
 import { scriptToHash, serializeWitnessArgs } from '@nervosnetwork/ckb-sdk-utils'
 import { Service } from '../..'
-import { FEE, TestnetDeployment } from '../../constants'
+import {
+  FEE,
+  getAlwaysSuccessLock,
+  getCotaTypeScript,
+  getReistryTypeScript,
+  getAlwaysSuccessCellDep,
+  getCotaCellDep,
+} from '../../constants'
 import { append0x, remove0x } from '../../utils/hex'
 
 const COTA_CELL_CAPACITY = BigInt(150) * BigInt(100000000)
@@ -8,11 +15,12 @@ const COTA_CELL_CAPACITY = BigInt(150) * BigInt(100000000)
 const generateCotaOutputs = async (
   inputCapacity: bigint,
   cotaLocks: CKBComponents.Script[],
+  isMainnet = false,
 ): Promise<CKBComponents.CellOutput[]> => {
-  const registryLock = TestnetDeployment.AlwaysSuccessLockScript
+  const registryLock = getAlwaysSuccessLock(isMainnet)
   let outputs: CKBComponents.CellOutput[] = cotaLocks.map(lock => {
     const args = append0x(remove0x(scriptToHash(lock)).slice(0, 40))
-    const cotaType = { ...TestnetDeployment.CotaTypeScript, args }
+    const cotaType = { ...getCotaTypeScript(isMainnet), args }
     return {
       capacity: `0x${COTA_CELL_CAPACITY.toString(16)}`,
       lock,
@@ -35,10 +43,11 @@ export const generateRegisterCotaTx = async (
   cotaLocks: CKBComponents.Script[],
   lock: CKBComponents.Script,
   fee = FEE,
+  isMainnet = false,
 ): Promise<CKBComponents.RawTransactionToSign> => {
   const cotaCount = BigInt(cotaLocks.length)
-  const registryLock = TestnetDeployment.AlwaysSuccessLockScript
-  const registryType = TestnetDeployment.RegistryTypeScript
+  const registryLock = getAlwaysSuccessLock(isMainnet)
+  const registryType = getReistryTypeScript(isMainnet)
   const registryCells = await service.collector.getCells(registryLock, registryType)
   if (!registryCells || registryCells.length === 0) {
     throw new Error("Registry cell doesn't exist")
@@ -70,7 +79,7 @@ export const generateRegisterCotaTx = async (
 
   const outputsData = outputs.map((_, i) => (i === 0 ? registryCellData : i !== outputs.length - 1 ? '0x00' : '0x'))
 
-  const cellDeps = [TestnetDeployment.AlwaysSuccessLockDep, TestnetDeployment.CotaTypeDep]
+  const cellDeps = [getAlwaysSuccessCellDep(isMainnet), getCotaCellDep(isMainnet)]
 
   let rawTx = {
     version: '0x0',

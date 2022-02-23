@@ -1,7 +1,7 @@
 import { hexToBytes, PERSONAL, scriptToHash, serializeInput } from '@nervosnetwork/ckb-sdk-utils'
 import blake2b from '@nervosnetwork/ckb-sdk-utils/lib/crypto/blake2b'
 import { Byte, Service, DefineReq } from '../..'
-import { FEE, TestnetDeployment } from '../../constants'
+import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { u8ToHex, u32ToBe, append0x } from '../../utils'
 
 const generateCotaId = (firstInput: CKBComponents.CellInput, definesIndex: number) => {
@@ -18,8 +18,9 @@ export const generateDefineCotaTx = async (
   total: number,
   confiure: Byte,
   fee = FEE,
+  isMainnet = false,
 ) => {
-  const cotaType = TestnetDeployment.CotaTypeScript
+  const cotaType = getCotaTypeScript(isMainnet)
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
   if (!cotaCells || cotaCells.length === 0) {
     throw new Error("Cota cell doesn't exist")
@@ -50,7 +51,7 @@ export const generateDefineCotaTx = async (
   const cotaCellData = `0x00${smtRootHash}`
 
   const outputsData = [cotaCellData]
-  const cellDeps = [TestnetDeployment.CotaTypeDep]
+  const cellDeps = [getCotaCellDep(isMainnet)]
 
   const rawTx = {
     version: '0x0',

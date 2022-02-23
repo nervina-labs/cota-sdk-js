@@ -1,6 +1,6 @@
 import { scriptToHash, serializeOutPoint, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Service, TransferReq, TransferWithdrawal } from '../..'
-import { FEE, TestnetDeployment } from '../../constants'
+import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { append0x } from '../../utils/hex'
 
 export const generateTransferCotaTx = async (
@@ -9,8 +9,9 @@ export const generateTransferCotaTx = async (
   withdrawalLock: CKBComponents.Script,
   transfers: TransferWithdrawal[],
   fee = FEE,
+  isMainnet = false,
 ) => {
-  const cotaType = TestnetDeployment.CotaTypeScript
+  const cotaType = getCotaTypeScript(isMainnet)
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
   if (!cotaCells || cotaCells.length === 0) {
     throw new Error("Cota cell doesn't exist")
@@ -43,7 +44,7 @@ export const generateTransferCotaTx = async (
   const outputsData = [`0x00${smtRootHash}`]
 
   const withdrawalCellDep: CKBComponents.CellDep = { outPoint: withdrawalCotaCell.outPoint, depType: 'code' }
-  const cellDeps = [withdrawalCellDep, TestnetDeployment.CotaTypeDep]
+  const cellDeps = [withdrawalCellDep, getCotaCellDep(isMainnet)]
   const rawTx = {
     version: '0x0',
     cellDeps,
