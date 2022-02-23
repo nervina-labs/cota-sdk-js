@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@nervosnetwork/ckb-sdk-utils": "^0.102.0",
-    "@nervina-labs/cota-sdk": "0.1.0"
+    "@nervosnetwork/ckb-sdk-utils": "^0.102.1",
+    "@nervina-labs/cota-sdk": "0.1.1"
   }
 }
