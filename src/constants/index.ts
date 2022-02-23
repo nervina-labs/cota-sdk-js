@@ -1,7 +1,7 @@
 export const FEE = BigInt(160000)
 export const MIN_CAPACITY = BigInt(61) * BigInt(100000000)
 
-export const TestnetInfo = {
+const TestnetInfo = {
   RegistryTypeScript: {
     codeHash: '0x9302db6cc1344b81a5efee06962abcb40427ecfcbe69d471b01b2658ed948075',
     hashType: 'type',
@@ -31,7 +31,7 @@ export const TestnetInfo = {
   } as CKBComponents.CellDep,
 }
 
-export const MainnetInfo = {
+const MainnetInfo = {
   RegistryTypeScript: {
     codeHash: '0x90ca618be6c15f5857d3cbd09f9f24ca6770af047ba9ee70989ec3b229419ac7',
     hashType: 'type',
