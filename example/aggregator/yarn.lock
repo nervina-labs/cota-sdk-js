@@ -2,18 +2,18 @@
 # yarn lockfile v1
 
 
-"@nervina-labs/cota-sdk@0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.1.0.tgz#012768d8f048108e93d04269a385e82697716a7b"
-  integrity sha512-fi7OlfSMbW8IKV1XtuPaQ3JAw8U9c7rbmL33KG+UTOZzM3ws5OEsfCRukSH0cffAtH+mueEtSC+MRgW5htnfvQ==
+"@nervina-labs/cota-sdk@0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.1.2.tgz#42167524254a890d97919093986997e3cace87e0"
+  integrity sha512-lo4M8XWh/eyJqFqi75kSKsWzb7pods5n9dN96XUj8T9AmfGfwFL1lPTem/gN5CKFzyK2cIc8omcQq38Jwdif0g==
   dependencies:
-    "@nervosnetwork/ckb-sdk-core" "^0.102.0"
-    "@nervosnetwork/ckb-sdk-utils" "^0.102.0"
-    "@nervosnetwork/ckb-types" "^0.102.0"
+    "@nervosnetwork/ckb-sdk-core" "^0.102.1"
+    "@nervosnetwork/ckb-sdk-utils" "^0.102.1"
+    "@nervosnetwork/ckb-types" "^0.102.1"
     axios "^0.26.0"
     camelcase-keys "^7.0.2"
 
-"@nervosnetwork/ckb-sdk-core@^0.102.0":
+"@nervosnetwork/ckb-sdk-core@^0.102.1":
   version "0.102.1"
   resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-core/-/ckb-sdk-core-0.102.1.tgz#680c1ebe6425549132d96da288d7600b24dcd98a"
   integrity sha512-q6T5ooNYzA9ZhlV4ad39Zn6ubVOa7gCFZ31O+LJAhSxRZDpKctTiwVbgvNFoa2vDvTZej6hT98fb2pACW4rYnQ==
@@ -32,7 +32,7 @@
     axios "0.21.4"
     tslib "2.3.1"
 
-"@nervosnetwork/ckb-sdk-utils@0.102.1", "@nervosnetwork/ckb-sdk-utils@^0.102.0":
+"@nervosnetwork/ckb-sdk-utils@0.102.1", "@nervosnetwork/ckb-sdk-utils@^0.102.1":
   version "0.102.1"
   resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-utils/-/ckb-sdk-utils-0.102.1.tgz#5e9bd9e2ebfbbd7b55f915e087e5cbd557bab34f"
   integrity sha512-M+6P+8qhXiJoV5e77KtCLQQoKvuOAYdaCd6FEF5V6OhURbkRdhy6gxulY2YB7chlaw7QbvPhlVHlWB1DFOjkHw==
@@ -43,7 +43,7 @@
     jsbi "3.1.3"
     tslib "2.3.1"
 
-"@nervosnetwork/ckb-types@0.102.1", "@nervosnetwork/ckb-types@^0.102.0":
+"@nervosnetwork/ckb-types@0.102.1", "@nervosnetwork/ckb-types@^0.102.1":
   version "0.102.1"
   resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-types/-/ckb-types-0.102.1.tgz#95278bfdbc489ad6225ed8125a235ee7ba378882"
   integrity sha512-WFE/wPwZm+UYpgKmP2QX2zQyzCkAocfjQyP8DWJds3KhsI+7Z9EjFZ3lzDEWclU/KokC1fOd9+Bu5DMrfkcZng==
