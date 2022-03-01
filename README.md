@@ -44,3 +44,5 @@ https://testnet.ckbapp.dev/indexer  --->  ckb testnet indexer_rpc
 - [withdraw example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/withdraw.ts): Generate withdrawing CoTA NFT transaction
 - [transfer example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/transfer.ts): Generate transferring CoTA NFT transaction
 - [update example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/update.ts): Generate updating CoTA NFT information transaction
+- [claim&update example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/claim-update.ts): Generate claiming and updateing CoTA NFT transaction
+- [transfer&update example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/transfer-update.ts): Generate transferring and updating CoTA NFT transaction
