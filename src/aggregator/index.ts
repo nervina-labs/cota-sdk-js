@@ -11,6 +11,8 @@ import {
   UpdateReq,
   WithdrawalReq,
   GetCotaSenderReq,
+  ClaimUpdateReq,
+  TransferUpdateReq,
 } from '../types/request'
 import {
   ClaimResp,
@@ -26,6 +28,8 @@ import {
   UpdateResp,
   WithdrawalResp,
   GetCotaSenderResp,
+  ClaimUpdateResp,
+  TransferUpdateResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -91,6 +95,14 @@ export class Aggregator {
 
   async generateClaimCotaSmt(claim: ClaimReq): Promise<ClaimResp> {
     return (await this.baseRPC('generate_claim_cota_smt', claim)) as Promise<ClaimResp>
+  }
+
+  async generateTransferUpdateCotaSmt(transfer: TransferUpdateReq): Promise<TransferUpdateResp> {
+    return (await this.baseRPC('generate_transfer_update_cota_smt', transfer)) as Promise<TransferUpdateResp>
+  }
+
+  async generateClaimUpdateCotaSmt(claim: ClaimUpdateReq): Promise<ClaimUpdateResp> {
+    return (await this.baseRPC('generate_claim_update_cota_smt', claim)) as Promise<ClaimUpdateResp>
   }
 
   async generateUpdateCotaSmt(update: UpdateReq): Promise<UpdateResp> {

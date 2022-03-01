@@ -44,6 +44,18 @@ export interface UpdateResp extends SmtResp {
   blockNumber: bigint
 }
 
+export interface ClaimUpdateResp extends SmtResp {
+  smtRootHash: Byte32
+  claimUpdateSmtEntry: Bytes
+  blockNumber: bigint
+}
+
+export interface TransferUpdateResp extends SmtResp {
+  smtRootHash: Byte32
+  transferUpdateSmtEntry: Bytes
+  blockNumber: bigint
+}
+
 export interface GetHoldResp extends SmtResp {
   total: number
   pageSize: number
