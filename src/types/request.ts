@@ -66,6 +66,27 @@ export interface UpdateReq extends SmtReq {
   nfts: CotaNft[]
 }
 
+export interface ClaimUpdateReq extends SmtReq {
+  lockScript: Bytes
+  withdrawalLockHash: Byte32
+  nfts: CotaNft[]
+}
+
+export interface TransferUpdate {
+  cotaId: Byte20
+  tokenIndex: Byte4
+  toLockScript: Bytes
+  state: Byte
+  characteristic: Byte20
+}
+
+export interface TransferUpdateReq extends SmtReq {
+  lockScript: Bytes
+  withdrawalLockHash: CKBComponents.Hash
+  transferOutPoint: Byte24
+  transfers: TransferUpdate[]
+}
+
 export interface GetCotaReq extends SmtReq {
   lockScript: Bytes
   page: number
