@@ -1,8 +1,8 @@
 import { addressToScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
-import { generateDefineCotaTx } from '../src/service/cota'
-import { CotaInfo, Service } from '../src'
+import { generateIssuerInfoTx } from '../src/service/cota'
+import { IssuerInfo, Service } from '../src'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 
 const TEST_PRIVATE_KEY = '0xc5bd09c9b954559c70a77d68bde95369e2ce910556ddc20f739080cde3b62ef2'
@@ -19,23 +19,23 @@ const run = async () => {
     aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
   }
   const ckb = service.collector.getCkb()
-  const defineLock = addressToScript(TEST_ADDRESS)
+  const cotaLock = addressToScript(TEST_ADDRESS)
 
-  const cotaInfo: CotaInfo = {
-    name: "First Step",
-    description: "First step to Blockchain mass adoption. NFT platform launch memento.\n\n-- Nervina Labs & Lay2 Tech, 4/30/2021.",
-    image: "https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png",
+  const issuer: IssuerInfo = {
+    name: "Nervina Labs",
+    description: "Melting Two Worlds Together.",
+    avatar: "https://i.loli.net/2021/04/29/IigbpOWP8fw9qDn.png",
   }
 
-  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 100, '0x00', cotaInfo)
-  console.log(`cotaId: ${cotaId}`)
+  let rawTx = await generateIssuerInfoTx(service, cotaLock, issuer)
+
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
 
   const signedTx = ckb.signTransaction(TEST_PRIVATE_KEY)(rawTx)
   console.log(JSON.stringify(signedTx))
   let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
-  console.info(`Define cota nft tx has been sent with tx hash ${txHash}`)
+  console.info(`Set issuer information tx has been sent with tx hash ${txHash}`)
 }
 
 run()
