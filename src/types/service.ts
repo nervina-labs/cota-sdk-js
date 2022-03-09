@@ -18,12 +18,12 @@ export interface IssuerInfo {
 }
 
 export interface CotaInfo {
-  name: string,
+  name: string
   image: string
-  description?: string,
+  description?: string
   audio?: string
   video?: string
   model?: string
-  characteristic?: [string, number][] 
+  characteristic?: [string, number][]
   properties?: string
 }
