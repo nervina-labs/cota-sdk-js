@@ -10,3 +10,9 @@ export interface Service {
   collector: Collector
   aggregator: Aggregator
 }
+
+export interface IssuerInfo {
+  name: string,
+  description: string
+  avatar: string
+}
