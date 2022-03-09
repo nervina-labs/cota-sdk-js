@@ -2,7 +2,28 @@ import { hexToBytes, PERSONAL, scriptToHash, serializeInput } from '@nervosnetwo
 import blake2b from '@nervosnetwork/ckb-sdk-utils/lib/crypto/blake2b'
 import { Byte, Service, DefineReq } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
-import { u8ToHex, u32ToBe, append0x } from '../../utils'
+import { CotaInfo, Hex } from '../../types'
+import { u8ToHex, u32ToBe, append0x, utf8ToHex, toSnakeCase } from '../../utils'
+
+const generateCotaMetadata = (cotaInfo: CotaInfo, cotaId: Hex): Hex => {
+  const cotaInfoTemp = {
+    cotaId,
+    ...cotaInfo,
+  }
+  const cotaMeta = {
+    id: "CTMeta",
+    ver: "1.0",
+    metadata: {
+      target: "output#0",
+      type: "cota",
+      data: {
+        version: "0",
+        ...cotaInfoTemp,
+      }
+    }
+  }
+  return append0x(utf8ToHex(JSON.stringify(toSnakeCase(cotaMeta))))
+}
 
 const generateCotaId = (firstInput: CKBComponents.CellInput, definesIndex: number) => {
   const input = hexToBytes(serializeInput(firstInput))
@@ -17,6 +38,7 @@ export const generateDefineCotaTx = async (
   cotaLock: CKBComponents.Script,
   total: number,
   confiure: Byte,
+  cotaInfo: CotaInfo,
   fee = FEE,
   isMainnet = false,
 ) => {
@@ -63,7 +85,7 @@ export const generateDefineCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: `0x01${defineSmtEntry}`, outputType: '' },
+    i > 0 ? '0x' : { lock: '', inputType: `0x01${defineSmtEntry}`, outputType: generateCotaMetadata(cotaInfo, cotaId) },
   )
   return { rawTx, cotaId }
 }

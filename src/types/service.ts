@@ -12,7 +12,18 @@ export interface Service {
 }
 
 export interface IssuerInfo {
+  name: string
+  description?: string
+  avatar?: string
+}
+
+export interface CotaInfo {
   name: string,
-  description: string
-  avatar: string
+  image: string
+  description?: string,
+  audio?: string
+  video?: string
+  model?: string
+  characteristic?: [string, number][] 
+  properties?: string
 }
