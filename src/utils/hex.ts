@@ -1,5 +1,4 @@
 import { hexToBytes, bytesToHex } from '@nervosnetwork/ckb-sdk-utils'
-import { TextDecoder, TextEncoder } from 'util'
 
 export const remove0x = (hex: string): string => {
   if (hex.startsWith('0x')) {
