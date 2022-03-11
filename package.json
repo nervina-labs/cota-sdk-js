@@ -1,6 +1,6 @@
 {
   "name": "@nervina-labs/cota-sdk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "The SDK of CoTA",
   "repository": "git@github.com:nervina-labs/cota-sdk-js.git",
   "author": "duanyytop <duanyytop@gmail.com>",
@@ -28,6 +28,7 @@
     "@nervosnetwork/ckb-sdk-utils": "^0.102.2",
     "@nervosnetwork/ckb-types": "^0.102.2",
     "axios": "^0.26.1",
+    "convert-keys": "1.3.4",
     "camelcase-keys": "^7.0.2"
   },
   "devDependencies": {
@@ -35,7 +36,6 @@
     "@types/node": "17.0.21",
     "@typescript-eslint/parser": "5.14.0",
     "babel-eslint": "10.1.0",
-    "convert-keys": "1.3.4",
     "eslint": "8.10.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.25.4",
