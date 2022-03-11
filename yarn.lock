@@ -148,40 +148,40 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@nervosnetwork/ckb-sdk-core@^0.102.1":
-  version "0.102.1"
-  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-core/-/ckb-sdk-core-0.102.1.tgz#680c1ebe6425549132d96da288d7600b24dcd98a"
-  integrity sha512-q6T5ooNYzA9ZhlV4ad39Zn6ubVOa7gCFZ31O+LJAhSxRZDpKctTiwVbgvNFoa2vDvTZej6hT98fb2pACW4rYnQ==
+"@nervosnetwork/ckb-sdk-core@^0.102.2":
+  version "0.102.2"
+  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-core/-/ckb-sdk-core-0.102.2.tgz#6ab1303f1687dd12c0273f91fd6744ed51b0347b"
+  integrity sha512-jvu1Hk5HYfAXbd78AvhUUtJmAVH/oa0RqceIqGQO5mu1hLiMDgjpOfV3p8FDaeqmh3MSPbPM2M2DtO3rGmZftg==
   dependencies:
-    "@nervosnetwork/ckb-sdk-rpc" "0.102.1"
-    "@nervosnetwork/ckb-sdk-utils" "0.102.1"
-    "@nervosnetwork/ckb-types" "0.102.1"
+    "@nervosnetwork/ckb-sdk-rpc" "0.102.2"
+    "@nervosnetwork/ckb-sdk-utils" "0.102.2"
+    "@nervosnetwork/ckb-types" "0.102.2"
     tslib "2.3.1"
 
-"@nervosnetwork/ckb-sdk-rpc@0.102.1":
-  version "0.102.1"
-  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-rpc/-/ckb-sdk-rpc-0.102.1.tgz#6b9d98071428e81d1c28880991a4455458850478"
-  integrity sha512-xCIhiAunHt9peEY+doxNk28Nc74I8RAN0JHyyhxOYWTZqWg7EwvPeI9CNSi0Do4M/zgJ3Cln6yWjJQrSChMQuA==
+"@nervosnetwork/ckb-sdk-rpc@0.102.2":
+  version "0.102.2"
+  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-rpc/-/ckb-sdk-rpc-0.102.2.tgz#0de07cb2683fb6ae9db7478e9bfe6b1971ed2658"
+  integrity sha512-IhLsqsHb1RMsNJh9GBoSQgsIEIGYu2ch6SwsrxNN1+Qr33PlImr2WDfM42qIvZazZJUH9ssldAZmABy2xrgf5g==
   dependencies:
-    "@nervosnetwork/ckb-sdk-utils" "0.102.1"
+    "@nervosnetwork/ckb-sdk-utils" "0.102.2"
     axios "0.21.4"
     tslib "2.3.1"
 
-"@nervosnetwork/ckb-sdk-utils@0.102.1", "@nervosnetwork/ckb-sdk-utils@^0.102.1":
-  version "0.102.1"
-  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-utils/-/ckb-sdk-utils-0.102.1.tgz#5e9bd9e2ebfbbd7b55f915e087e5cbd557bab34f"
-  integrity sha512-M+6P+8qhXiJoV5e77KtCLQQoKvuOAYdaCd6FEF5V6OhURbkRdhy6gxulY2YB7chlaw7QbvPhlVHlWB1DFOjkHw==
+"@nervosnetwork/ckb-sdk-utils@0.102.2", "@nervosnetwork/ckb-sdk-utils@^0.102.2":
+  version "0.102.2"
+  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-sdk-utils/-/ckb-sdk-utils-0.102.2.tgz#726285d1345b25fa15762aa483ca0b3349944cf1"
+  integrity sha512-s+KKS6J9V4SWAApSkBCWiGWSo1aybm0v2LSCP2lAF/IhzhCb/BWR2ZMOMoBBFaA9GCEsoZYXpQBG1o1XgGPo/w==
   dependencies:
-    "@nervosnetwork/ckb-types" "0.102.1"
+    "@nervosnetwork/ckb-types" "0.102.2"
     bech32 "2.0.0"
     elliptic "6.5.4"
     jsbi "3.1.3"
     tslib "2.3.1"
 
-"@nervosnetwork/ckb-types@0.102.1", "@nervosnetwork/ckb-types@^0.102.1":
-  version "0.102.1"
-  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-types/-/ckb-types-0.102.1.tgz#95278bfdbc489ad6225ed8125a235ee7ba378882"
-  integrity sha512-WFE/wPwZm+UYpgKmP2QX2zQyzCkAocfjQyP8DWJds3KhsI+7Z9EjFZ3lzDEWclU/KokC1fOd9+Bu5DMrfkcZng==
+"@nervosnetwork/ckb-types@0.102.2", "@nervosnetwork/ckb-types@^0.102.2":
+  version "0.102.2"
+  resolved "https://registry.yarnpkg.com/@nervosnetwork/ckb-types/-/ckb-types-0.102.2.tgz#6f781419b0e837356ab63fec116031c4dcf40998"
+  integrity sha512-bnocHxyKs2cHQPJGlICJO4S5tAnPoQCGTlo0TefI6x1am7FXJoxNyS2djmmOTFnDFdMy4BhH3WsIaAmhT1TT9w==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -369,10 +369,10 @@ axios@0.21.4:
   dependencies:
     follow-redirects "^1.14.0"
 
-axios@^0.26.0:
-  version "0.26.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.0.tgz#9a318f1c69ec108f8cd5f3c3d390366635e13928"
-  integrity sha512-lKoGLMYtHvFrPVt3r+RBMp9nh34N0M8zEfCWqdWZx6phynIEhQqAdydpyBAAG211zlhX9Rgu08cOamy6XjE5Og==
+axios@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
+  integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
   dependencies:
     follow-redirects "^1.14.8"
 
