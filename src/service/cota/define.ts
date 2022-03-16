@@ -70,7 +70,7 @@ export const generateDefineCotaTx = async (
   }
 
   const { smtRootHash, defineSmtEntry } = await service.aggregator.generateDefineCotaSmt(defineReq)
-  const cotaCellData = `0x00${smtRootHash}`
+  const cotaCellData = `0x01${smtRootHash}`
 
   const outputsData = [cotaCellData]
   const cellDeps = [getCotaCellDep(isMainnet)]
