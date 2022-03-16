@@ -41,7 +41,7 @@ export const generateTransferCotaTx = async (
     transfers,
   }
   const { smtRootHash, transferSmtEntry } = await service.aggregator.generateTransferCotaSmt(transferReq)
-  const outputsData = [`0x00${smtRootHash}`]
+  const outputsData = [`0x01${smtRootHash}`]
 
   const withdrawalCellDep: CKBComponents.CellDep = { outPoint: withdrawalCotaCell.outPoint, depType: 'code' }
   const cellDeps = [withdrawalCellDep, getCotaCellDep(isMainnet)]
