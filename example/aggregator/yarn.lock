@@ -14,16 +14,17 @@
   dependencies:
     "@cspotcode/source-map-consumer" "0.8.0"
 
-"@nervina-labs/cota-sdk@0.1.5":
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.1.5.tgz#920146a29800dc233831d2ca2d0a3c581cade2ce"
-  integrity sha512-p1TH9WdTpiM0OeL8tKUUAJ8cCsvWpe8zJ/azB7B2xyXlHr7J11AyUYsce47IHvHFnGniVpQ4UeiYDq9XDnIQPQ==
+"@nervina-labs/cota-sdk@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.2.0.tgz#c759cff205717cf42016d6c8b5b7a3ee0aefbd8e"
+  integrity sha512-O8eUdKY2qwWgsCIb3z6YbZZIx4SIKT2/saxiBn0iwP7PlEh3Tgu7qQK152Yd+6kI+doubso99TLQhvPAGKu5bA==
   dependencies:
     "@nervosnetwork/ckb-sdk-core" "^0.102.2"
     "@nervosnetwork/ckb-sdk-utils" "^0.102.2"
     "@nervosnetwork/ckb-types" "^0.102.2"
     axios "^0.26.1"
     camelcase-keys "^7.0.2"
+    convert-keys "1.3.4"
 
 "@nervosnetwork/ckb-sdk-core@^0.102.2":
   version "0.102.2"
@@ -144,6 +145,16 @@ camelcase@^6.3.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
+convert-keys@1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/convert-keys/-/convert-keys-1.3.4.tgz#9285f9967beb386a61203f22ab1c7baaddd9d8ea"
+  integrity sha512-+ltki+EUagotW/x7r+15nuHyk4nzcSkBk1lZpmbHjscF2E9ZmNErgV7K18LNshB0qglECcsnwy29ODlJ0pI0KA==
+  dependencies:
+    lodash.camelcase "^4.3.0"
+    lodash.forown "^4.4.0"
+    lodash.isplainobject "^4.0.6"
+    lodash.snakecase "^4.1.1"
+
 create-require@^1.1.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
@@ -198,6 +209,26 @@ jsbi@3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-3.1.3.tgz#f024b340032f7c7caaa6ca4b32b55e8d33f6e897"
   integrity sha512-nBJqA0C6Qns+ZxurbEoIR56wyjiUszpNy70FHvxO5ervMoCbZVE3z3kxr5nKGhlxr/9MhKTSUBs7cAwwuf3g9w==
+
+lodash.camelcase@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
+  integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
+
+lodash.forown@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/lodash.forown/-/lodash.forown-4.4.0.tgz#85115cf04f73ef966eced52511d3893cc46683af"
+  integrity sha1-hRFc8E9z75ZuztUlEdOJPMRmg68=
+
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/lodash.isplainobject/-/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+  integrity sha1-fFJqUtibRcRcxpC4gWO+BJf1UMs=
+
+lodash.snakecase@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/lodash.snakecase/-/lodash.snakecase-4.1.1.tgz#39d714a35357147837aefd64b5dcbb16becd8f8d"
+  integrity sha1-OdcUo1NXFHg3rv1ktdy7Fr7Nj40=
 
 make-error@^1.1.1:
   version "1.3.6"
