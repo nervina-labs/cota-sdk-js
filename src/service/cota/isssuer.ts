@@ -5,16 +5,16 @@ import { append0x, utf8ToHex } from '../../utils'
 
 const generateIssuerMetadata = (issuerInfo: IssuerInfo): Hex => {
   const issuerMeta = {
-    id: "CTMeta",
-    ver: "1.0",
+    id: 'CTMeta',
+    ver: '1.0',
     metadata: {
-      target: "output#0",
-      type: "issuer",
+      target: 'output#0',
+      type: 'issuer',
       data: {
-        version: "0",
+        version: '0',
         ...issuerInfo,
-      }
-    }
+      },
+    },
   }
   return append0x(utf8ToHex(JSON.stringify(issuerMeta)))
 }

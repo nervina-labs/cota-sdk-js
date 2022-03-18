@@ -8,6 +8,11 @@ export interface RegistryResp {
   blockNumber: bigint
 }
 
+export interface CheckRegisteredResp {
+  registered: boolean
+  blockNumber: bigint
+}
+
 export interface DefineResp extends SmtResp {
   smtRootHash: Byte32
   defineSmtEntry: Bytes
