@@ -17,6 +17,12 @@ const run = async () => {
     tokenIndex: '0x00000000',
   })
   console.log(JSON.stringify(senderLockHash))
+
+  const result = await aggregator.checkReisteredLockHashes([
+    '0x6a8f45a094cbe050d1a612924901b11edc1bce28c0fd8d96cdc8779889f28aa8',
+    '0xbe30bcf4cfc2203cb7bf53b111cae4ced9af8674f088f8ea54b3efb76a5a4050',
+  ])
+  console.log(JSON.stringify(result))
 }
 
 run()

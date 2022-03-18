@@ -11,16 +11,16 @@ const generateCotaMetadata = (cotaInfo: CotaInfo, cotaId: Hex): Hex => {
     ...cotaInfo,
   }
   const cotaMeta = {
-    id: "CTMeta",
-    ver: "1.0",
+    id: 'CTMeta',
+    ver: '1.0',
     metadata: {
-      target: "output#0",
-      type: "cota",
+      target: 'output#0',
+      type: 'cota',
       data: {
-        version: "0",
+        version: '0',
         ...cotaInfoTemp,
-      }
-    }
+      },
+    },
   }
   return append0x(utf8ToHex(JSON.stringify(toSnakeCase(cotaMeta))))
 }

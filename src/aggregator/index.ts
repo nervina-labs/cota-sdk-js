@@ -30,6 +30,7 @@ import {
   GetCotaSenderResp,
   ClaimUpdateResp,
   TransferUpdateResp,
+  CheckRegisteredResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -65,7 +66,6 @@ export class Aggregator {
       if (response.error) {
         console.error(response)
       } else {
-        console.log(JSON.stringify(response))
         return toCamelcase(response.result)
       }
     } catch (error) {
@@ -75,6 +75,14 @@ export class Aggregator {
 
   async generateRegisterCotaSmt(lockHashes: Byte32[]): Promise<RegistryResp> {
     return (await this.baseRPC('register_cota_cells', lockHashes, this.registryUrl)) as Promise<RegistryResp>
+  }
+
+  async checkReisteredLockHashes(lockHashes: Byte32[]): Promise<CheckRegisteredResp> {
+    return (await this.baseRPC(
+      'check_registered_lock_hashes',
+      lockHashes,
+      this.registryUrl,
+    )) as Promise<CheckRegisteredResp>
   }
 
   async generateDefineCotaSmt(define: DefineReq): Promise<DefineResp> {
