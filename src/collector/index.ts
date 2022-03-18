@@ -63,7 +63,6 @@ export class Collector {
       console.error(response.error)
       throw Error('Get cells error')
     } else {
-      console.log(JSON.stringify(response))
       return toCamelcase(response.result.objects)
     }
   }
