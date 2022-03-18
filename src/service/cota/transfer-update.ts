@@ -40,7 +40,9 @@ export const generateTransferUpdateCotaTx = async (
     transferOutPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
     transfers,
   }
-  const { smtRootHash, transferUpdateSmtEntry } = await service.aggregator.generateTransferUpdateCotaSmt(transferUpdateReq)
+  const { smtRootHash, transferUpdateSmtEntry } = await service.aggregator.generateTransferUpdateCotaSmt(
+    transferUpdateReq,
+  )
   const outputsData = [`0x01${smtRootHash}`]
 
   const withdrawalCellDep: CKBComponents.CellDep = { outPoint: withdrawalCotaCell.outPoint, depType: 'code' }
