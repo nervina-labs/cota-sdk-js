@@ -15,9 +15,9 @@ const COTA_CELL_CAPACITY = BigInt(150) * BigInt(100000000)
 const generateCotaOutputs = async (
   inputCapacity: bigint,
   cotaLocks: CKBComponents.Script[],
+  changeLock: CKBComponents.Script,
   isMainnet = false,
 ): Promise<CKBComponents.CellOutput[]> => {
-  const registryLock = getAlwaysSuccessLock(isMainnet)
   let outputs: CKBComponents.CellOutput[] = cotaLocks.map(lock => {
     const args = append0x(remove0x(scriptToHash(lock)).slice(0, 40))
     const cotaType = { ...getCotaTypeScript(isMainnet), args }
@@ -32,7 +32,7 @@ const generateCotaOutputs = async (
   const changeCapacity = inputCapacity - FEE - COTA_CELL_CAPACITY * cotaCellsLength
   outputs.push({
     capacity: `0x${changeCapacity.toString(16)}`,
-    lock: registryLock,
+    lock: changeLock,
     type: null,
   })
   return outputs
@@ -54,7 +54,6 @@ export const generateRegisterCotaTx = async (
   }
   let registryCell = registryCells[0]
   const liveCells = await service.collector.getCells(lock)
-  console.log(JSON.stringify(liveCells))
   const { inputs: normalInputs, capacity } = await service.collector.collectInputs(
     liveCells,
     COTA_CELL_CAPACITY * cotaCount,
@@ -69,7 +68,7 @@ export const generateRegisterCotaTx = async (
   ]
   inputs = inputs.concat(normalInputs)
 
-  let outputs = await generateCotaOutputs(capacity, cotaLocks)
+  let outputs = await generateCotaOutputs(capacity, cotaLocks, lock)
   outputs = [registryCell.output].concat(outputs)
   outputs.at(-1).capacity = `0x${(BigInt(outputs.at(-1).capacity) - FEE).toString(16)}`
 
@@ -93,6 +92,5 @@ export const generateRegisterCotaTx = async (
   const registryWitness = serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' })
   const emptyWitness = { lock: '', inputType: '', outputType: '' }
   rawTx.witnesses = rawTx.inputs.map((_, i) => (i === 0 ? registryWitness : i === 1 ? emptyWitness : '0x'))
-  console.log(JSON.stringify(rawTx))
   return rawTx
 }
