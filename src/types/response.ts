@@ -107,8 +107,8 @@ export interface GetCotaSenderResp {
 }
 
 export interface GetDefineInfoResp {
-  total: Byte4
-  issued: Byte4
+  total: number
+  issued: number
   configure: Byte
   blockNumber: bigint
 }
