@@ -104,3 +104,7 @@ export interface GetCotaSenderReq extends SmtReq {
   cotaId: Byte20
   tokenIndex: Byte4
 }
+
+export interface GetDefineInfoReq extends SmtReq {
+  cotaId: Byte20
+}
