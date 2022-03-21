@@ -23,6 +23,11 @@ const run = async () => {
     '0xbe30bcf4cfc2203cb7bf53b111cae4ced9af8674f088f8ea54b3efb76a5a4050',
   ])
   console.log(JSON.stringify(result))
+
+  const defineInfo = await aggregator.getDefineInfo({
+    cotaId: '0xb22585a8053af3fed0fd39127f5b1487ce08b756',
+  })
+  console.log(JSON.stringify(defineInfo))
 }
 
 run()

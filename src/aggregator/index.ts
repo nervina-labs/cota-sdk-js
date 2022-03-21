@@ -13,6 +13,7 @@ import {
   GetCotaSenderReq,
   ClaimUpdateReq,
   TransferUpdateReq,
+  GetDefineInfoReq,
 } from '../types/request'
 import {
   ClaimResp,
@@ -31,6 +32,7 @@ import {
   ClaimUpdateResp,
   TransferUpdateResp,
   CheckRegisteredResp,
+  GetDefineInfoResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -135,6 +137,10 @@ export class Aggregator {
 
   async getCotaNftSender(req: GetCotaSenderReq): Promise<GetCotaSenderResp> {
     return (await this.baseRPC('get_cota_nft_sender', req)) as Promise<GetCotaSenderResp>
+  }
+
+  async getDefineInfo(req: GetDefineInfoReq): Promise<GetDefineInfoResp> {
+    return (await this.baseRPC('get_define_info', req)) as Promise<GetDefineInfoResp>
   }
 }
 
