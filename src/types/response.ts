@@ -105,3 +105,10 @@ export interface GetCotaSenderResp {
   senderLockHash: Byte32
   blockNumber: bigint
 }
+
+export interface GetDefineInfoResp {
+  total: Byte4
+  issued: Byte4
+  configure: Byte
+  blockNumber: bigint
+}
