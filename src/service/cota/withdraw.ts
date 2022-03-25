@@ -1,4 +1,4 @@
-import { scriptToHash, serializeOutPoint } from '@nervosnetwork/ckb-sdk-utils'
+import { serializeOutPoint, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Service, TransferWithdrawal, WithdrawalReq } from '../../types'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { append0x } from '../../utils'
@@ -26,7 +26,7 @@ export const generateWithdrawCotaTx = async (
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const withdrawalReq: WithdrawalReq = {
-    lockHash: scriptToHash(cotaLock),
+    lockScript: serializeScript(cotaLock),
     outPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
     withdrawals: withdrawals,
   }

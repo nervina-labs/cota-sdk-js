@@ -1,4 +1,4 @@
-import { scriptToHash, serializeOutPoint, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
+import { serializeOutPoint, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Service, TransferReq, TransferWithdrawal } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { append0x } from '../../utils/hex'
@@ -27,7 +27,7 @@ export const generateTransferCotaTx = async (
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const cotaLockScript = serializeScript(cotaLock)
-  const withdrawalLockHash = scriptToHash(withdrawalLock)
+  const withdrawalLockScript = serializeScript(withdrawalLock)
   const withdrawalCotaCells = await service.collector.getCells(withdrawalLock, cotaType)
   if (!withdrawalCotaCells || withdrawalCotaCells.length === 0) {
     throw new Error("Withdrawal cota cell doesn't exist")
@@ -36,7 +36,7 @@ export const generateTransferCotaTx = async (
 
   const transferReq: TransferReq = {
     lockScript: cotaLockScript,
-    withdrawalLockHash,
+    withdrawalLockScript,
     transferOutPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
     transfers,
   }

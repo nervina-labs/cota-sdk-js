@@ -1,4 +1,4 @@
-import { scriptToHash, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
+import { serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Service, CotaNft, ClaimUpdateReq } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 
@@ -27,7 +27,7 @@ export const generateClaimUpdateCotaTx = async (
   const outputs = [cotaCell.output]
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
-  const withdrawalLockHash = scriptToHash(withdrawalLock)
+  const withdrawalLockScript = serializeScript(withdrawalLock)
   const withdrawalCotaCells = await service.collector.getCells(withdrawalLock, cotaType)
   if (!withdrawalCotaCells || withdrawalCotaCells.length === 0) {
     throw new Error("Withdrawal cota cell doesn't exist")
@@ -36,7 +36,7 @@ export const generateClaimUpdateCotaTx = async (
 
   const claimUpdateReq: ClaimUpdateReq = {
     lockScript: serializeScript(cotaLock),
-    withdrawalLockHash,
+    withdrawalLockScript,
     nfts,
   }
 
