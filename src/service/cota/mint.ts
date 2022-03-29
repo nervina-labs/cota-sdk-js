@@ -1,4 +1,4 @@
-import { scriptToHash, serializeOutPoint } from '@nervosnetwork/ckb-sdk-utils'
+import { serializeOutPoint, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { MintReq, Service } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { MintCotaInfo } from '../../types/service'
@@ -28,7 +28,7 @@ export const generateMintCotaTx = async (
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const mintReq: MintReq = {
-    lockHash: scriptToHash(cotaLock),
+    lockScript: serializeScript(cotaLock),
     cotaId: append0x(mintCotaInfo.cotaId),
     outPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
     withdrawals: mintCotaInfo.withdrawals,

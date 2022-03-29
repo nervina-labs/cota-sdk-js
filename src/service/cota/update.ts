@@ -1,4 +1,4 @@
-import { scriptToHash } from '@nervosnetwork/ckb-sdk-utils'
+import { serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { CotaNft, Service, UpdateReq } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 
@@ -24,7 +24,7 @@ export const generateUpdateCotaTx = async (
   const outputs = [cotaCell.output]
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
   const updateReq: UpdateReq = {
-    lockHash: scriptToHash(cotaLock),
+    lockScript: serializeScript(cotaLock),
     nfts: cotaNfts,
   }
   const { smtRootHash, updateSmtEntry } = await service.aggregator.generateUpdateCotaSmt(updateReq)

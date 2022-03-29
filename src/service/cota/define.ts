@@ -1,4 +1,4 @@
-import { hexToBytes, PERSONAL, scriptToHash, serializeInput } from '@nervosnetwork/ckb-sdk-utils'
+import { hexToBytes, PERSONAL, serializeInput, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import blake2b from '@nervosnetwork/ckb-sdk-utils/lib/crypto/blake2b'
 import { Byte, Service, DefineReq } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
@@ -59,10 +59,9 @@ export const generateDefineCotaTx = async (
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const cotaId = generateCotaId(inputs[0], 0)
-  console.info(`cotaId:  ${cotaId}`)
 
   const defineReq: DefineReq = {
-    lockHash: scriptToHash(cotaLock),
+    lockScript: serializeScript(cotaLock),
     cotaId,
     total: append0x(u32ToBe(total)),
     issued: '0x00000000',
