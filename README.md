@@ -15,10 +15,13 @@ JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-agg
 
 ## Prerequisites
 
-- [CKB Node](https://docs.nervos.org/docs/basics/guides/testnet)
-- [CKB Indexer](https://github.com/nervosnetwork/ckb-indexer)
-- [CoTA Registry Aggregator](https://github.com/nervina-labs/cota-registry-aggregator)
-- [CoTA Aggregator](https://github.com/nervina-labs/cota-aggregator)
+CoTA SDK needs to run the services as blow:
+
+- [CKB Node](https://docs.nervos.org/docs/basics/guides/testnet): Nervos CKB Node
+- [CKB Indexer](https://github.com/nervosnetwork/ckb-indexer): Fetch live cells and transactions with filters
+- [CoTA Syncer](https://github.com/nervina-labs/cota-nft-entries-syncer): Parse CoTA witness SMT data from CKB blockchain history transactions and save it to the mysql database
+- [CoTA Registry Aggregator](https://github.com/nervina-labs/cota-registry-aggregator): Generate SMT info using the data from the database for registry and provide RPC APIs
+- [CoTA Aggregator](https://github.com/nervina-labs/cota-aggregator): Generate SMT info using the data from the database for CoTA NFT actions and provide RPC APIs
 
 ### Public ckb node url and ckb indexer url as blow can be used to develop and test
 
@@ -32,6 +35,29 @@ testnet:
 https://testnet.ckbapp.dev  --->  ckb testnet rpc
 https://testnet.ckbapp.dev/rpc  --->  ckb testnet rpc
 https://testnet.ckbapp.dev/indexer  --->  ckb testnet indexer_rpc
+```
+
+## CoTA NFT Flow
+
+```
+                     Register CoTA cell firstly
+1. Alice & Bob & Tom ----------------------------------> Alice CoTA cell & Bob CoTA cell & Tom CoTA cell
+
+          Define CoTA NFT               Mint CoTA NFT A to receivers
+2. Alice -----------------------> NFT A -----------------------------------> Receivers (Bob)
+
+                    Claim NFT A                                  Withdraw NFT A to Tom
+       Action1 |-------------------------> Bob hold NFT A now ----------------------------------> Bob doesnot hold NFT A now
+      |             Transfer NFT A to Tom
+3. Bob Action2 |-----------------------------------> Bob doesnot hold NFT A now
+      |           Update CoTA NFT A information
+       Action3 |-----------------------------------> Bob hold CoTA NFT A with new information
+
+                    Claim NFT A                             Withdraw NFT A to other receviers
+        Action1 |-------------------------> Tom hold NFT A now ----------------------------------> Tom doesnot hold NFT A now
+4. Tom |         Transfer NFT A to other receviers
+        Action2 |-----------------------------------> Tom doesnot hold NFT A now
+
 ```
 
 ## Examples

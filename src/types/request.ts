@@ -3,7 +3,7 @@ import { Byte, Byte20, Byte24, Byte32, Byte4, Bytes } from './common'
 export interface SmtReq {}
 
 export interface DefineReq extends SmtReq {
-  lockHash: CKBComponents.Hash
+  lockScript: Bytes
   cotaId: Byte20
   total: Byte4
   issued: Byte4
@@ -18,7 +18,7 @@ export interface MintWithdrawal {
 }
 
 export interface MintReq extends SmtReq {
-  lockHash: CKBComponents.Hash
+  lockScript: Bytes
   cotaId: Byte20
   outPoint: Byte24
   withdrawals: MintWithdrawal[]
@@ -31,14 +31,14 @@ export interface TransferWithdrawal {
 }
 
 export interface WithdrawalReq extends SmtReq {
-  lockHash: CKBComponents.Hash
+  lockScript: Bytes
   outPoint: Byte24
   withdrawals: TransferWithdrawal[]
 }
 
 export interface TransferReq extends SmtReq {
   lockScript: Bytes
-  withdrawalLockHash: CKBComponents.Hash
+  withdrawalLockScript: Bytes
   transferOutPoint: Byte24
   transfers: TransferWithdrawal[]
 }
@@ -50,7 +50,7 @@ export interface Claim {
 
 export interface ClaimReq extends SmtReq {
   lockScript: Bytes
-  withdrawalLockHash: Byte32
+  withdrawalLockScript: Bytes
   claims: Claim[]
 }
 
@@ -62,13 +62,13 @@ export interface CotaNft {
 }
 
 export interface UpdateReq extends SmtReq {
-  lockHash: Byte32
+  lockScript: Bytes
   nfts: CotaNft[]
 }
 
 export interface ClaimUpdateReq extends SmtReq {
   lockScript: Bytes
-  withdrawalLockHash: Byte32
+  withdrawalLockScript: Bytes
   nfts: CotaNft[]
 }
 
@@ -82,7 +82,7 @@ export interface TransferUpdate {
 
 export interface TransferUpdateReq extends SmtReq {
   lockScript: Bytes
-  withdrawalLockHash: CKBComponents.Hash
+  withdrawalLockScript: Bytes
   transferOutPoint: Byte24
   transfers: TransferUpdate[]
 }
@@ -94,7 +94,7 @@ export interface GetCotaReq extends SmtReq {
 }
 
 export interface IsClaimedReq extends SmtReq {
-  lockHash: Byte32
+  lockScript: Bytes
   cotaId: Byte20
   tokenIndex: Byte4
 }
