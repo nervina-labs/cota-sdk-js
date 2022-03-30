@@ -27,14 +27,22 @@ CoTA SDK needs to run the services as blow:
 
 ```
 mainnet
-https://mainnet.ckbapp.dev  --->  ckb mainnet rpc
-https://mainnet.ckbapp.dev/rpc  --->  ckb mainnet rpc
-https://mainnet.ckbapp.dev/indexer  --->  ckb mainnet indexer_rpc
+https://mainnet.ckbapp.dev           --->  ckb mainnet rpc
+https://mainnet.ckbapp.dev/rpc       --->  ckb mainnet rpc
+https://mainnet.ckbapp.dev/indexer   --->  ckb mainnet indexer_rpc
 
 testnet:
-https://testnet.ckbapp.dev  --->  ckb testnet rpc
-https://testnet.ckbapp.dev/rpc  --->  ckb testnet rpc
-https://testnet.ckbapp.dev/indexer  --->  ckb testnet indexer_rpc
+https://testnet.ckbapp.dev           --->  ckb testnet rpc
+https://testnet.ckbapp.dev/rpc       --->  ckb testnet rpc
+https://testnet.ckbapp.dev/indexer   --->  ckb testnet indexer_rpc
+```
+
+### Public aggregator rpc url as blow can be used to develop and test
+
+```
+testnet:
+https://cota.nervina.dev/aggregator           --->  cota aggregator rpc
+https://cota.nervina.dev/registry-aggregator  --->  cota registry aggregator rpc
 ```
 
 ## CoTA NFT Flow
