@@ -6,7 +6,7 @@ const run = async () => {
     lockScript:
       '0x490000001000000030000000310000009bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce80114000000dc70f33de86fdf381b4fc5bf092bb23d02774801',
     page: 0,
-    pageSize: 10,
+    pageSize: 3,
   })
   console.log(JSON.stringify(holds))
 
@@ -36,6 +36,12 @@ const run = async () => {
     tokenIndex: '0x00000000',
   })
   console.log(JSON.stringify(isClaimed))
+
+  const issuerInfo = await aggregator.getIssuerInfo({
+    lockScript:
+      '0x490000001000000030000000310000009bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce80114000000f86332ab26fe5baa89f7a8f458cffd8de379f255',
+  })
+  console.log(JSON.stringify(issuerInfo))
 }
 
 run()
