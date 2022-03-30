@@ -108,3 +108,7 @@ export interface GetCotaSenderReq extends SmtReq {
 export interface GetDefineInfoReq extends SmtReq {
   cotaId: Byte20
 }
+
+export interface GetIssuerInfoReq extends SmtReq {
+  lockScript: Bytes
+}
