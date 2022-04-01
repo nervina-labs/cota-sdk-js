@@ -8,11 +8,6 @@ JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-agg
 
 [CoTA Docs](https://developer.mibao.net/docs/develop/cota/overview)
 
-## Feature
-
-- Provide methods for [cota-aggregator](https://github.com/nervina-labs/cota-aggregator) and [cota-registry-aggregator](https://github.com/nervina-labs/cota-registry-aggregator) RPC APIs
-- Provide methods to generate CoTA operating transactions
-
 ## Prerequisites
 
 CoTA SDK needs to run the services as blow:
@@ -23,15 +18,17 @@ CoTA SDK needs to run the services as blow:
 - [CoTA Registry Aggregator](https://github.com/nervina-labs/cota-registry-aggregator): Generate SMT info using the data from the database for registry and provide RPC APIs
 - [CoTA Aggregator](https://github.com/nervina-labs/cota-aggregator): Generate SMT info using the data from the database for CoTA NFT actions and provide RPC APIs
 
+> The above services are valid only when synced to the latest block
+
 ### Public ckb node url and ckb indexer url as blow can be used to develop and test
 
 ```
-mainnet
-https://mainnet.ckbapp.dev/rpc       --->  ckb mainnet rpc
+mainnet:
+https://mainnet.ckbapp.dev/rpc       --->  ckb mainnet node rpc
 https://mainnet.ckbapp.dev/indexer   --->  ckb mainnet indexer rpc
 
 testnet:
-https://testnet.ckbapp.dev/rpc       --->  ckb testnet rpc
+https://testnet.ckbapp.dev/rpc       --->  ckb testnet node rpc
 https://testnet.ckbapp.dev/indexer   --->  ckb testnet indexer rpc
 ```
 
@@ -53,18 +50,26 @@ https://cota.nervina.dev/registry-aggregator  --->  cota registry aggregator rpc
 2. Alice -----------------------> NFT A -----------------------------------> Receivers (Bob)
 
                     Claim NFT A                                  Withdraw NFT A to Tom
-       Action1 |-------------------------> Bob hold NFT A now ----------------------------------> Bob doesnot hold NFT A now
+       Action1 |-------------------------> Bob hold NFT A now ----------------------------------> Bob doesn't hold NFT A now
       |             Transfer NFT A to Tom
-3. Bob Action2 |-----------------------------------> Bob doesnot hold NFT A now
+3. Bob Action2 |-----------------------------------> Bob doesn't hold NFT A now
       |           Update CoTA NFT A information
        Action3 |-----------------------------------> Bob hold CoTA NFT A with new information
 
-                    Claim NFT A                             Withdraw NFT A to other receviers
-        Action1 |-------------------------> Tom hold NFT A now ----------------------------------> Tom doesnot hold NFT A now
-4. Tom |         Transfer NFT A to other receviers
-        Action2 |-----------------------------------> Tom doesnot hold NFT A now
+                    Claim NFT A                                 Withdraw NFT A to other receivers
+        Action1 |-------------------------> Tom hold NFT A now ----------------------------------> Tom doesn't hold NFT A now
+4. Tom |         Transfer NFT A to other receivers
+        Action2 |-----------------------------------> Tom doesn't hold NFT A now
 
 ```
+
+- Registry: Every address should be registered firstly
+- Define: The issuer can define a collection NFTs with total/name/description/image etc.
+- Mint: The issuer mint the defined NFTs to the receivers (withdraw to the receivers actually)
+- Claim: The receiver can claim the NFT from the mint, and now the receiver hold the NFT
+- Update: The holder of NFT can update the information (characteristic/state etc.)
+- Withdraw: The holder of NFT can withdraw the NFT to any other CKB address
+- Transfer: To simplify, transfer combines the claim and withdraw into one operation. The receiver can claim the NFT from the mint and withdraw the same NFT to others in one transaction.
 
 ## Examples
 
