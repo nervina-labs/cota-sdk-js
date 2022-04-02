@@ -18,7 +18,7 @@ CoTA SDK needs to run the services as blow:
 - [CoTA Registry Aggregator](https://github.com/nervina-labs/cota-registry-aggregator): Generate SMT info using the data from the database for registry and provide RPC APIs
 - [CoTA Aggregator](https://github.com/nervina-labs/cota-aggregator): Generate SMT info using the data from the database for CoTA NFT actions and provide RPC APIs
 
-> The above services are valid only when synced to the latest block
+> The above services are valid only when synced to the latest block and we strongly suggest to run the services in mainnet by yourself.
 
 ### Public ckb node url and ckb indexer url as blow can be used to develop and test
 
@@ -63,13 +63,13 @@ https://cota.nervina.dev/registry-aggregator  --->  cota registry aggregator rpc
 
 ```
 
-- Registry: Every address should be registered firstly
-- Define: The issuer can define a collection NFTs with total/name/description/image etc.
-- Mint: The issuer mint the defined NFTs to the receivers (withdraw to the receivers actually)
-- Claim: The receiver can claim the NFT from the mint, and now the receiver hold the NFT
-- Update: The holder of NFT can update the information (characteristic/state etc.)
-- Withdraw: The holder of NFT can withdraw the NFT to any other CKB address
-- Transfer: To simplify, transfer combines the claim and withdraw into one operation. The receiver can claim the NFT from the mint and withdraw the same NFT to others in one transaction.
+- Registry:  Every address should be registered firstly
+- Define:    The issuer can define a collection NFTs with total/name/description/image etc.
+- Mint:      The issuer mint the defined NFTs to the receivers (withdraw to the receivers actually)
+- Claim:     The receiver can claim the NFT from the mint, and now the receiver hold the NFT
+- Update:    The holder of NFT can update the information (characteristic/state etc.)
+- Withdraw:  The holder of NFT can withdraw the NFT to any other CKB address
+- Transfer:  To simplify, transfer combines the claim and withdraw into one operation. The receiver can claim the NFT from the mint and withdraw the same NFT to others in a transaction.
 
 ## Examples
 
