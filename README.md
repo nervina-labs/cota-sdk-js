@@ -8,6 +8,13 @@ JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-agg
 
 [CoTA Docs](https://developer.mibao.net/docs/develop/cota/overview)
 
+## Install
+```bash
+$ npm i @nervina-labs/cota-sdk
+# or
+$ yarn add @nervina-labs/cota-sdk
+```
+
 ## Prerequisites
 
 CoTA SDK needs to run the services as blow:
