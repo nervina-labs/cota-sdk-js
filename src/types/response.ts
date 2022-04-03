@@ -74,6 +74,11 @@ export interface GetHoldResp extends SmtResp {
     name: string
     description: string
     image: string
+    audio: string
+    video: string
+    model: string
+    metaCharacteristic: string
+    properties: string
   }[]
 }
 
@@ -93,6 +98,11 @@ export interface GetMintResp {
     name: string
     description: string
     image: string
+    audio: string
+    video: string
+    model: string
+    metaCharacteristic: string
+    properties: string
   }[]
 }
 
@@ -111,4 +121,10 @@ export interface GetDefineInfoResp {
   issued: number
   configure: Byte
   blockNumber: bigint
+}
+
+export interface GetIssuerInfoResp {
+  name: string
+  avatar: string
+  description: string
 }

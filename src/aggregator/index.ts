@@ -14,6 +14,7 @@ import {
   ClaimUpdateReq,
   TransferUpdateReq,
   GetDefineInfoReq,
+  GetIssuerInfoReq,
 } from '../types/request'
 import {
   ClaimResp,
@@ -33,6 +34,7 @@ import {
   TransferUpdateResp,
   CheckRegisteredResp,
   GetDefineInfoResp,
+  GetIssuerInfoResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -61,7 +63,7 @@ export class Aggregator {
           headers: {
             'Content-Type': 'application/json',
           },
-          timeout: 20000,
+          timeout: 60000,
           data: body,
         })
       ).data
@@ -141,6 +143,10 @@ export class Aggregator {
 
   async getDefineInfo(req: GetDefineInfoReq): Promise<GetDefineInfoResp> {
     return (await this.baseRPC('get_define_info', req)) as Promise<GetDefineInfoResp>
+  }
+
+  async getIssuerInfo(req: GetIssuerInfoReq): Promise<GetIssuerInfoResp> {
+    return (await this.baseRPC('get_issuer_info', req)) as Promise<GetIssuerInfoResp>
   }
 }
 
