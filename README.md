@@ -73,7 +73,7 @@ https://cota.nervina.dev/registry-aggregator  --->  cota registry aggregator rpc
 
 ## Examples
 
-- [aggregator example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/aggregator.ts): Fetch CoTA NFT data and [SMT](https://github.com/nervosnetwork/sparse-merkle-tree) data from Aggregator server
+- [aggregator example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/aggregator.ts): Fetch CoTA NFT data(include issuer/NFT class info) from Aggregator server
 - [registry example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/registry.ts): Generate registering CoTA cells transaction
 - [issuer example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/issuer.ts): Generate setting issuer information transaction
 - [define example](https://github.com/nervina-labs/cota-sdk-js/blob/develop/example/define.ts): Generate setting cota information and defining CoTA cells transaction
