@@ -55,6 +55,7 @@ export class Aggregator {
       params: toSnakeCase(req),
     }
     const body = JSON.stringify(payload, null, '')
+    console.log(body)
     try {
       let response = (
         await axios({
@@ -151,7 +152,7 @@ export class Aggregator {
 }
 
 const convert = (req: GetCotaReq) => ({
-  lockScript: req.lockScript,
+  ...req,
   page: req.page.toString(),
   pageSize: req.pageSize.toString(),
 })

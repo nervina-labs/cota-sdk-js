@@ -121,6 +121,14 @@ export interface GetDefineInfoResp {
   issued: number
   configure: Byte
   blockNumber: bigint
+  name: string
+  description: string
+  image: string
+  audio: string
+  video: string
+  model: string
+  metaCharacteristic: string
+  properties: string
 }
 
 export interface GetIssuerInfoResp {

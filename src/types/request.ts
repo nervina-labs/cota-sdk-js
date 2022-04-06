@@ -91,6 +91,7 @@ export interface GetCotaReq extends SmtReq {
   lockScript: Bytes
   page: number
   pageSize: number
+  cotaId?: Byte20
 }
 
 export interface IsClaimedReq extends SmtReq {
