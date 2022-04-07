@@ -8,6 +8,14 @@ JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-agg
 
 [CoTA Docs](https://developer.mibao.net/docs/develop/cota/overview)
 
+## Installation
+
+```bash
+$ npm i @nervina-labs/cota-sdk
+# or
+$ yarn add @nervina-labs/cota-sdk
+```
+
 ## Prerequisites
 
 CoTA SDK needs to run the services as blow:
@@ -63,13 +71,13 @@ https://cota.nervina.dev/registry-aggregator  --->  cota registry aggregator rpc
 
 ```
 
-- Registry:  Every address should be registered firstly
-- Define:    The issuer can define a collection NFTs with total/name/description/image etc.
-- Mint:      The issuer mint the defined NFTs to the receivers (withdraw to the receivers actually)
-- Claim:     The receiver can claim the NFT from the mint, and now the receiver hold the NFT
-- Update:    The holder of NFT can update the information (characteristic/state etc.)
-- Withdraw:  The holder of NFT can withdraw the NFT to any other CKB address
-- Transfer:  To simplify, transfer combines the claim and withdraw into one operation. The receiver can claim the NFT from the mint and withdraw the same NFT to others in a transaction.
+- Registry: Every address should be registered firstly
+- Define: The issuer can define a collection NFTs with total/name/description/image etc.
+- Mint: The issuer mint the defined NFTs to the receivers (withdraw to the receivers actually)
+- Claim: The receiver can claim the NFT from the mint, and now the receiver hold the NFT
+- Update: The holder of NFT can update the information (characteristic/state etc.)
+- Withdraw: The holder of NFT can withdraw the NFT to any other CKB address
+- Transfer: To simplify, transfer combines the claim and withdraw into one operation. The receiver can claim the NFT from the mint and withdraw the same NFT to others in a transaction.
 
 ## Examples
 

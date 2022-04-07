@@ -1,6 +1,6 @@
 {
   "name": "@nervina-labs/cota-sdk",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "The SDK of CoTA",
   "repository": "git@github.com:nervina-labs/cota-sdk-js.git",
   "author": "duanyytop <duanyytop@gmail.com>",
@@ -34,14 +34,14 @@
   "devDependencies": {
     "@types/crypto-js": "4.1.1",
     "@types/node": "17.0.23",
-    "@typescript-eslint/parser": "5.17.0",
+    "@typescript-eslint/parser": "5.18.0",
     "babel-eslint": "10.1.0",
     "eslint": "8.12.0",
     "eslint-config-prettier": "8.5.0",
-    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-import": "2.26.0",
     "eslint-plugin-prettier": "4.0.0",
     "husky": "7.0.4",
-    "prettier": "2.6.1",
+    "prettier": "2.6.2",
     "ts-node": "10.7.0",
     "tslib": "2.3.1",
     "typescript": "4.6.3"
