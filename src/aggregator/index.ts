@@ -127,7 +127,7 @@ export class Aggregator {
   }
 
   async getWithdrawCotaNft(req: GetCotaReq): Promise<GetWithdrawalResp> {
-    return (await this.baseRPC('get_withdraw_cota_nft', convert(req))) as Promise<GetWithdrawalResp>
+    return (await this.baseRPC('get_withdrawal_cota_nft', convert(req))) as Promise<GetWithdrawalResp>
   }
 
   async getMintCotaNft(req: GetCotaReq): Promise<GetMintResp> {
