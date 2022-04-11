@@ -14,10 +14,10 @@
   dependencies:
     "@cspotcode/source-map-consumer" "0.8.0"
 
-"@nervina-labs/cota-sdk@0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.4.1.tgz#e09ccff35f18ce14324d6e73a168c21be1a20e22"
-  integrity sha512-MiuTl81x71HNc22bT+Vz4k3TsuymzbDdVcgWiYX0fR+m6vZ3L0dXGWoCqh0jTLem2BH3M/3fPBKwXI7309vfag==
+"@nervina-labs/cota-sdk@0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.4.2.tgz#a000a0df0fa705fd0e34c6c0f279e7d1ea182029"
+  integrity sha512-Cplddq21x3aYHCxbPDuY9h++ffWuy2dNCiKcIUda08xAHyM8xRxSVqitmKvF2pj1McaRacoacb8JhA2YER/Ozw==
   dependencies:
     "@nervosnetwork/ckb-sdk-core" "^0.102.3"
     "@nervosnetwork/ckb-sdk-utils" "^0.102.3"
