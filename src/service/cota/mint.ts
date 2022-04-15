@@ -2,7 +2,7 @@ import { serializeOutPoint, serializeScript } from '@nervosnetwork/ckb-sdk-utils
 import { MintReq, Service } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { MintCotaInfo } from '../../types/service'
-import { append0x } from '../../utils'
+import { append0x, u32ToBe } from '../../utils'
 
 export const generateMintCotaTx = async (
   service: Service,
@@ -27,11 +27,23 @@ export const generateMintCotaTx = async (
   const outputs = [cotaCell.output]
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
+  const cotaId = append0x(mintCotaInfo.cotaId)
+  
+  let withdrawals = mintCotaInfo.withdrawals
+  const isTokenIndexNull = withdrawals.some(withdrawal => withdrawal.tokenIndex == null || withdrawal.tokenIndex === '')
+  if (isTokenIndexNull) {
+    const { issued } = await service.aggregator.getDefineInfo({cotaId})
+    withdrawals = withdrawals.map((withdrawal, index) => ({
+      ...withdrawal,
+      tokenIndex: append0x(u32ToBe(issued + index))
+    }))
+  }
+
   const mintReq: MintReq = {
     lockScript: serializeScript(cotaLock),
-    cotaId: append0x(mintCotaInfo.cotaId),
+    cotaId,
     outPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
-    withdrawals: mintCotaInfo.withdrawals,
+    withdrawals,
   }
 
   const { smtRootHash, mintSmtEntry } = await service.aggregator.generateMintCotaSmt(mintReq)

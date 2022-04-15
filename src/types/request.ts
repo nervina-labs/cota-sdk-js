@@ -11,7 +11,7 @@ export interface DefineReq extends SmtReq {
 }
 
 export interface MintWithdrawal {
-  tokenIndex: Byte4
+  tokenIndex?: Byte4
   state: Byte
   characteristic: Byte20
   toLockScript: Bytes
