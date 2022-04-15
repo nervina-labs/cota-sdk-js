@@ -22,17 +22,18 @@ const run = async () => {
   const ckb = service.collector.getCkb()
   const mintLock = addressToScript(TEST_ADDRESS)
 
+  // If any tokenIndex of MintCotaInfo is not set, the tokenIndex will be set automatically with issued count.
   const mintCotaInfo: MintCotaInfo = {
-    cotaId: '0x678319cdf1f343aa4adf379bafebbb2fc9360ac9',
+    cotaId: '0x1e23dc506c1b15f286c9db84a4d12a4532660975',
     withdrawals: [
       {
-        tokenIndex: '0x00000000',
+        // tokenIndex: '0x00000000',
         state: '0x00',
         characteristic: '0x0505050505050505050505050505050505050505',
         toLockScript: serializeScript(addressToScript(RECEIVER_ADDRESS)),
       },
       {
-        tokenIndex: '0x00000001',
+        // tokenIndex: '0x00000001',
         state: '0x00',
         characteristic: '0x0505050505050505050505050505050505050505',
         toLockScript: serializeScript(addressToScript(RECEIVER_ADDRESS)),
