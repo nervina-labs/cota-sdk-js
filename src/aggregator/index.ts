@@ -15,6 +15,7 @@ import {
   TransferUpdateReq,
   GetDefineInfoReq,
   GetIssuerInfoReq,
+  GetCotaCountReq,
 } from '../types/request'
 import {
   ClaimResp,
@@ -35,6 +36,7 @@ import {
   CheckRegisteredResp,
   GetDefineInfoResp,
   GetIssuerInfoResp,
+  GetCotaCountResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -148,6 +150,10 @@ export class Aggregator {
 
   async getIssuerInfo(req: GetIssuerInfoReq): Promise<GetIssuerInfoResp> {
     return (await this.baseRPC('get_issuer_info', req)) as Promise<GetIssuerInfoResp>
+  }
+
+  async getCotaCount(req: GetCotaCountReq): Promise<GetCotaCountResp> {
+    return (await this.baseRPC('get_cota_count', req)) as Promise<GetCotaCountResp>
   }
 }
 
