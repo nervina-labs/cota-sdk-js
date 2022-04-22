@@ -136,3 +136,8 @@ export interface GetIssuerInfoResp {
   avatar: string
   description: string
 }
+
+export interface GetCotaCountResp {
+  count: number
+  blockNumber: bigint
+}
