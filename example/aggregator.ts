@@ -59,6 +59,13 @@ const run = async () => {
       '0x490000001000000030000000310000009bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce80114000000f86332ab26fe5baa89f7a8f458cffd8de379f255',
   })
   console.log(JSON.stringify(issuerInfo))
+
+  const cotaCount = await aggregator.getCotaCount({
+    lockScript:
+      '0x490000001000000030000000310000009bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce80114000000dc70f33de86fdf381b4fc5bf092bb23d02774801',
+      cotaId: '0xb22585a8053af3fed0fd39127f5b1487ce08b756',
+  })
+  console.log(JSON.stringify(cotaCount))
 }
 
 run()
