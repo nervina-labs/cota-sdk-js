@@ -34,7 +34,12 @@ const run = async () => {
     image: "https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png",
   }
 
-  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 100, '0x00', cotaInfo)
+  // Testnet
+  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo)
+
+  // Mainnet
+  // let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo, FEE, true)
+
   console.log(`cotaId: ${cotaId}`)
   rawTx.cellDeps.push(secp256k1CellDep(false))
 
