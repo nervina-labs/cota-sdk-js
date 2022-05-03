@@ -31,11 +31,14 @@ const run = async () => {
 
   // Mainnet
   // let rawTx = await generateRegisterCotaTx(service, [unregisteredCotaLock], provideCKBLock, FEE, true)
-  
+
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
 
   const registryLock = getAlwaysSuccessLock(false)
+
+  // Mainnet
+  // const registryLock = getAlwaysSuccessLock(true)
 
   let keyMap = new Map()
   keyMap.set(scriptToHash(registryLock), '')
