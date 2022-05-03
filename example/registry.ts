@@ -33,6 +33,9 @@ const run = async () => {
 
   const registryLock = getAlwaysSuccessLock(false)
 
+  // Mainnet
+  // const registryLock = getAlwaysSuccessLock(true)
+
   let keyMap = new Map<string, string>()
   keyMap.set(scriptToHash(registryLock), '')
   keyMap.set(scriptToHash(provideCKBLock), TEST_PRIVATE_KEY)
