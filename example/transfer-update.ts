@@ -26,14 +26,18 @@ const run = async () => {
 
   const transfers: TransferUpdate[] = [
     {
-      cotaId: '0x678319cdf1f343aa4adf379bafebbb2fc9360ac9',
+      cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
       tokenIndex: '0x00000001',
       toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
       state: '0x00',
       characteristic: '0x2525250505050505050505050505050505050505',
     },
   ]
+  // Testnet
   let rawTx = await generateTransferUpdateCotaTx(service, cotaLock, withdrawLock, transfers)
+
+  // Mainnet
+  // let rawTx = await generateTransferUpdateCotaTx(service, cotaLock, withdrawLock, transfers, FEE, true)
 
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)

@@ -14,7 +14,18 @@ const run = async () => {
   }
   const ckb = service.collector.getCkb()
   const defineLock = addressToScript(TEST_ADDRESS)
-  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 100, '0x00')
+
+  const cotaInfo = {
+    name: "First Step",
+    description: "First step to Blockchain mass adoption. NFT platform launch memento.\n\n-- Nervina Labs & Lay2 Tech, 4/30/2021.",
+    image: "https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png",
+  }
+
+  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo)
+  
+  // Mainnet
+  // let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo, FEE, true)
+
   console.log(`cotaId: ${cotaId}`)
   const flashsingerDep: CKBComponents.CellDep = {
     outPoint: {

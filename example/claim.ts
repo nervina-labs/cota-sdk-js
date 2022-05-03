@@ -25,11 +25,15 @@ const run = async () => {
 
   const claims: Claim[] = [
     {
-      cotaId: '0x1deb31f603652bf59ff5027b522e1d81c288b72f',
-      tokenIndex: '0x00000000',
+      cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
+      tokenIndex: '0x00000018',
     },
   ]
+  // Testnet
   let rawTx = await generateClaimCotaTx(service, claimLock, withdrawLock, claims)
+
+  // Mainnet
+  // let rawTx = await generateClaimCotaTx(service, claimLock, withdrawLock, claims, FEE, true)
 
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)

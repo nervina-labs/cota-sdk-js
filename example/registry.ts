@@ -3,7 +3,7 @@ import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
 import { getAlwaysSuccessLock } from '../src/constants'
 import { generateRegisterCotaTx } from '../src/service/registry'
-import { Service } from '../src'
+import { Service, FEE } from '../src'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 import signWitnesses from '@nervosnetwork/ckb-sdk-core/lib/signWitnesses'
 
@@ -18,12 +18,16 @@ const secp256k1CellDep = async (ckb: CKB): Promise<CKBComponents.CellDep> => {
 const run = async () => {
   const service: Service = {
     collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    aggregator: new Aggregator({ registryUrl: 'http:/localhost:3050/', cotaUrl: 'http://localhost:3030' }),
   }
   const ckb = service.collector.getCkb()
   const provideCKBLock = addressToScript(TEST_ADDRESS)
   const unregisteredCotaLock = addressToScript(TEST_ADDRESS)
+  // Testnet
   let rawTx = await generateRegisterCotaTx(service, [unregisteredCotaLock], provideCKBLock)
+
+  // Mainnet
+  // let rawTx = await generateRegisterCotaTx(service, [unregisteredCotaLock], provideCKBLock, FEE, true)
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
 

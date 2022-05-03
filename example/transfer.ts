@@ -2,7 +2,7 @@ import { addressToScript, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
 import { generateTransferCotaTx } from '../src/service/cota'
-import { TransferWithdrawal, Service } from '../src'
+import { TransferWithdrawal, Service, Hex } from '../src'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 
 const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
@@ -26,12 +26,16 @@ const run = async () => {
 
   const transfers: TransferWithdrawal[] = [
     {
-      cotaId: '0x1deb31f603652bf59ff5027b522e1d81c288b72f',
-      tokenIndex: '0x00000001',
+      cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
+      tokenIndex: "0x00000004",
       toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
     },
   ]
+  // Testnet
   let rawTx = await generateTransferCotaTx(service, cotaLock, withdrawLock, transfers)
+
+  // Mainnet
+  // let rawTx = await generateTransferCotaTx(service, cotaLock, withdrawLock, transfers, FEE, true)
 
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
@@ -42,4 +46,5 @@ const run = async () => {
   console.info(`Transfer cota nft tx has been sent with tx hash ${txHash}`)
 }
 
-run()
+
+ run()

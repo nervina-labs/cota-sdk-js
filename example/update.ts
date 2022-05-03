@@ -23,14 +23,18 @@ const run = async () => {
 
   const cotaNfts: CotaNft[] = [
     {
-      cotaId: '0x1deb31f603652bf59ff5027b522e1d81c288b72f',
+      cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
       tokenIndex: '0x00000000',
       state: '0x00',
       characteristic: '0x0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a',
     },
   ]
 
+  // Testnet
   let rawTx = await generateUpdateCotaTx(service, cotaLock, cotaNfts)
+
+  // Mainnet
+  // let rawTx = await generateUpdateCotaTx(service, cotaLock, cotaNfts, FEE, true)
 
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)

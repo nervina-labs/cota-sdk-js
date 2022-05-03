@@ -24,7 +24,7 @@ const run = async () => {
 
   // If any tokenIndex of MintCotaInfo is not set, the tokenIndex will be set automatically with issued count.
   const mintCotaInfo: MintCotaInfo = {
-    cotaId: '0x1e23dc506c1b15f286c9db84a4d12a4532660975',
+    cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
     withdrawals: [
       {
         // tokenIndex: '0x00000000',
@@ -40,7 +40,12 @@ const run = async () => {
       },
     ],
   }
+
+  // Testnet
   let rawTx = await generateMintCotaTx(service, mintLock, mintCotaInfo)
+
+  // Mainnet
+  // let rawTx = await generateMintCotaTx(service, mintLock, mintCotaInfo, FEE, true)
 
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)

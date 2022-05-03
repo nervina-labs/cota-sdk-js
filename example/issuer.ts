@@ -27,7 +27,11 @@ const run = async () => {
     avatar: "https://i.loli.net/2021/04/29/IigbpOWP8fw9qDn.png",
   }
 
+  // Testnet
   let rawTx = await generateIssuerInfoTx(service, cotaLock, issuer)
+
+  // Mainnet
+  // let rawTx = await generateIssuerInfoTx(service, cotaLock, issuer, FEE, true)
 
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)

@@ -25,13 +25,17 @@ const run = async () => {
 
   const nfts: CotaNft[] = [
     {
-      cotaId: '0x678319cdf1f343aa4adf379bafebbb2fc9360ac9',
+      cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
       tokenIndex: '0x00000000',
       state: '0x00',
       characteristic: '0xa5a5a50505050505050505050505050505050505',
     },
   ]
+  //Testnet
   let rawTx = await generateClaimUpdateCotaTx(service, claimLock, withdrawLock, nfts)
+
+  // Mainnet
+  // let rawTx = await generateClaimUpdateCotaTx(service, claimLock, withdrawLock, nfts, FEE, true)
 
   const secp256k1Dep = await secp256k1CellDep(ckb)
   rawTx.cellDeps.push(secp256k1Dep)
