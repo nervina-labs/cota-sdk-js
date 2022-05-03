@@ -2,7 +2,7 @@ import { addressToScript, serializeWitnessArgs } from '@nervosnetwork/ckb-sdk-ut
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
 import { generateDefineCotaTx } from '../src/service/cota'
-import { Service } from '../src'
+import { Service, FEE } from '../src'
 import { toSnakeCase } from '../src/utils'
 
 const TEST_ADDRESS = 'ckt1qpth5hjexr3wehtzqpm97dzzucgemjv7sl05wnez7y72hqvuszeyyqvz2vhrf3xz0jr8dcmxlv059kmpx4tt5vcluapd4'

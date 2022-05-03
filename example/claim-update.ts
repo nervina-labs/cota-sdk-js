@@ -2,7 +2,7 @@ import { addressToScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
 import { generateClaimUpdateCotaTx } from '../src/service/cota'
-import { CotaNft, Service } from '../src'
+import { CotaNft, Service, FEE } from '../src'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 
 const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
