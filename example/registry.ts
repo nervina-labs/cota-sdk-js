@@ -18,7 +18,7 @@ const secp256k1CellDep = async (ckb: CKB): Promise<CKBComponents.CellDep> => {
 const run = async () => {
   const service: Service = {
     collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http:/localhost:3050/', cotaUrl: 'http://localhost:3030' }),
+    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
   }
   const ckb = service.collector.getCkb()
   const provideCKBLock = addressToScript(TEST_ADDRESS)
