@@ -70,7 +70,8 @@ export const generateRegisterCotaTx = async (
 
   let outputs = await generateCotaOutputs(capacity, cotaLocks, lock)
   outputs = [registryCell.output].concat(outputs)
-  outputs.at(-1).capacity = `0x${(BigInt(outputs.at(-1).capacity) - FEE).toString(16)}`
+  const length = outputs.length
+  outputs[length-1].capacity = `0x${(BigInt(outputs[length-1].capacity) - FEE).toString(16)}`
 
   const lockHashes = cotaLocks.map(lock => scriptToHash(lock))
   const { smtRootHash, registrySmtEntry } = await service.aggregator.generateRegisterCotaSmt(lockHashes)

@@ -2,7 +2,7 @@ import { addressToScript, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
 import { generateTransferCotaTx } from '../src/service/cota'
-import { TransferWithdrawal, Service, Hex } from '../src'
+import { TransferWithdrawal, Service, FEE } from '../src'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 
 const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'

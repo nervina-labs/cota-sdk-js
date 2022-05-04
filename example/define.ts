@@ -2,7 +2,7 @@ import { addressToScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
 import { generateDefineCotaTx } from '../src/service/cota'
-import { CotaInfo, Service } from '../src'
+import { CotaInfo, Service, FEE } from '../src'
 
 const TEST_PRIVATE_KEY = '0xc5bd09c9b954559c70a77d68bde95369e2ce910556ddc20f739080cde3b62ef2'
 const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
