@@ -1,8 +1,5 @@
 const { addressToScript } = require('@nervosnetwork/ckb-sdk-utils')
-const { Collector } = require('@nervina-labs/cota-sdk/lib/collector')
-const { Aggregator } = require('@nervina-labs/cota-sdk/lib/aggregator')
-const { generateDefineCotaTx } = require('@nervina-labs/cota-sdk/lib/service/cota')
-const { FEE } = require('@nervina-labs/cota-sdk/lib')
+const { Collector, Aggregator, generateDefineCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
 // AliceMainnet
 const TEST_PRIVATE_KEY = '0x-example'

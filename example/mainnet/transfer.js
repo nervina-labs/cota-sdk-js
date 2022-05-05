@@ -1,8 +1,5 @@
 const { addressToScript, serializeScript } = require('@nervosnetwork/ckb-sdk-utils')
-const { Collector } = require('@nervina-labs/cota-sdk/lib/collector')
-const { Aggregator } = require('@nervina-labs/cota-sdk/lib/aggregator')
-const { generateTransferCotaTx } = require('@nervina-labs/cota-sdk/lib/service/cota')
-const { FEE } = require('@nervina-labs/cota-sdk/lib')
+const { Collector, Aggregator, generateTransferCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
 const TEST_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
 const RECEIVER_PRIVATE_KEY = '0x-example'
@@ -44,8 +41,6 @@ const run = async () => {
     {
       cotaId: '0xae223946058e5b148045d11483df60b36dc28a30',
       tokenIndex: '0x00000000',
-      // cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
-      // tokenIndex: "0x00000004",
       toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
     },
   ]

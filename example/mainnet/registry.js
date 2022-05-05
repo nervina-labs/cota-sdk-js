@@ -4,12 +4,7 @@ const {
   scriptToHash,
   serializeWitnessArgs,
 } = require('@nervosnetwork/ckb-sdk-utils')
-const { Collector } = require('@nervina-labs/cota-sdk/lib/collector')
-const { Aggregator } = require('@nervina-labs/cota-sdk/lib/aggregator')
-const { getAlwaysSuccessLock } = require('@nervina-labs/cota-sdk/lib/constants')
-const { generateRegisterCotaTx } = require('@nervina-labs/cota-sdk/lib/service/registry')
-// const signWitnesses = require('@nervosnetwork/ckb-sdk-core/lib/signWitnesses')
-const { FEE } = require('@nervina-labs/cota-sdk')
+const { Collector, Aggregator, getAlwaysSuccessLock, generateRegisterCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
 // AliceMainnet
 const TEST_PRIVATE_KEY = '0x-example'
