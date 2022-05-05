@@ -8,6 +8,9 @@ import { toSnakeCase } from '../src/utils'
 const TEST_ADDRESS = 'ckt1qpth5hjexr3wehtzqpm97dzzucgemjv7sl05wnez7y72hqvuszeyyqvz2vhrf3xz0jr8dcmxlv059kmpx4tt5vcluapd4'
 
 const run = async () => {
+  // True for mainnet and false for testnet
+  const isMainnet = false
+
   const service: Service = {
     collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
     aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
@@ -21,10 +24,7 @@ const run = async () => {
     image: "https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png",
   }
 
-  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo)
-  
-  // Mainnet
-  // let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo, FEE, true)
+  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo, FEE, isMainnet)
 
   console.log(`cotaId: ${cotaId}`)
   const flashsingerDep: CKBComponents.CellDep = {
