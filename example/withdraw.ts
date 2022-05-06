@@ -5,8 +5,8 @@ import { generateWithdrawCotaTx } from '../src/service/cota'
 import { Service, TransferWithdrawal, FEE } from '../src'
 
 const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
-const RECEIVER_PRIVATE_KEY = '0xcf56c11ce3fbec627e5118acd215838d1f9c5048039792d42143f933cde76311'
-const RECEIVER_ADDRESS = 'ckt1qyqdcu8n8h5xlhecrd8ut0cf9wer6qnhfqqsnz3lw9'
+const RECEIVER_PRIVATE_KEY = '0xf0d72b5e3a27e603efb304aa16608ba3e480cb1c6790bced80fb82c53a822cee'
+const RECEIVER_ADDRESS = 'ckt1qyqy6xew5q449zg5du7wdjhgrxschjkg3n2q8h5ycc'
 
 const secp256k1CellDep = (isMainnet: boolean): CKBComponents.CellDep => {
   if (isMainnet) {
@@ -36,7 +36,7 @@ const run = async () => {
   const withdrawals: TransferWithdrawal[] = [
     {
       cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
-      tokenIndex: '0x00000000',
+      tokenIndex: '0x00000003',
       toLockScript: serializeScript(toLock),
     },
   ]

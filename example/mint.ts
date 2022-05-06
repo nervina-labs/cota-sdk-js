@@ -6,7 +6,7 @@ import { MintCotaInfo, Service, FEE } from '../src'
 
 const TEST_PRIVATE_KEY = '0xc5bd09c9b954559c70a77d68bde95369e2ce910556ddc20f739080cde3b62ef2'
 const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
-const RECEIVER_ADDRESS = 'ckt1qyqdcu8n8h5xlhecrd8ut0cf9wer6qnhfqqsnz3lw9'
+const RECEIVER_ADDRESS = 'ckt1qyqy6xew5q449zg5du7wdjhgrxschjkg3n2q8h5ycc'
 
 const secp256k1CellDep = (isMainnet: boolean): CKBComponents.CellDep => {
   if (isMainnet) {

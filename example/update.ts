@@ -4,8 +4,8 @@ import { Aggregator } from '../src/aggregator'
 import { generateUpdateCotaTx } from '../src/service/cota'
 import { CotaNft, Service, FEE } from '../src'
 
-const TEST_PRIVATE_KEY = '0xc5bd09c9b954559c70a77d68bde95369e2ce910556ddc20f739080cde3b62ef2'
-const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
+const RECEIVER_PRIVATE_KEY = '0xf0d72b5e3a27e603efb304aa16608ba3e480cb1c6790bced80fb82c53a822cee'
+const RECEIVER_ADDRESS = 'ckt1qyqy6xew5q449zg5du7wdjhgrxschjkg3n2q8h5ycc'
 
 const secp256k1CellDep = (isMainnet: boolean): CKBComponents.CellDep => {
   if (isMainnet) {
@@ -29,12 +29,12 @@ const run = async () => {
     aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
   }
   const ckb = service.collector.getCkb()
-  const cotaLock = addressToScript(TEST_ADDRESS)
+  const cotaLock = addressToScript(RECEIVER_ADDRESS)
 
   const cotaNfts: CotaNft[] = [
     {
       cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
-      tokenIndex: '0x00000000',
+      tokenIndex: '0x00000002',
       state: '0x00',
       characteristic: '0x0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a',
     },
@@ -43,7 +43,7 @@ const run = async () => {
   let rawTx = await generateUpdateCotaTx(service, cotaLock, cotaNfts, FEE, isMainnet)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))
 
-  const signedTx = ckb.signTransaction(TEST_PRIVATE_KEY)(rawTx)
+  const signedTx = ckb.signTransaction(RECEIVER_PRIVATE_KEY)(rawTx)
   console.log(JSON.stringify(signedTx))
   let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
   console.info(`Update cota nft tx has been sent with tx hash ${txHash}`)
