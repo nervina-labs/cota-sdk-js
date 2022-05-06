@@ -1,0 +1,9 @@
+{
+  "name": "mainnet-example",
+  "version": "1.0.0",
+  "description": "The examples for mainnet",
+  "license": "MIT",
+  "dependencies": {
+    "@nervina-labs/cota-sdk": "0.4.7"
+  }
+}
