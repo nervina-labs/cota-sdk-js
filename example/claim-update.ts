@@ -36,7 +36,7 @@ const run = async () => {
   const nfts: CotaNft[] = [
     {
       cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
-      tokenIndex: '0x00000003',
+      tokenIndex: '0x00000000',
       state: '0x00',
       characteristic: '0xa5a5a50505050505050505050505050505050505',
     },
