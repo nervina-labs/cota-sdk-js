@@ -1,32 +1,39 @@
-import { addressToScript, rawTransactionToHash, scriptToHash, serializeWitnessArgs } from '@nervosnetwork/ckb-sdk-utils'
-import { Collector } from '../src/collector'
-import { Aggregator } from '../src/aggregator'
-import { getAlwaysSuccessLock } from '../src/constants'
-import { generateRegisterCotaTx } from '../src/service/registry'
-import { Service, FEE } from '../src'
-import signWitnesses from '@nervosnetwork/ckb-sdk-core/lib/signWitnesses'
+const {
+  addressToScript,
+  rawTransactionToHash,
+  scriptToHash,
+  serializeWitnessArgs,
+} = require('@nervosnetwork/ckb-sdk-utils')
+const { Collector, Aggregator, getAlwaysSuccessLock, generateRegisterCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
-const TEST_PRIVATE_KEY = '0xc5bd09c9b954559c70a77d68bde95369e2ce910556ddc20f739080cde3b62ef2'
-const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
+// AliceMainnet
+const TEST_PRIVATE_KEY = '0x-example'
+const TEST_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
 
-const secp256k1CellDep = (isMainnet: boolean): CKBComponents.CellDep => {
+const secp256k1CellDep = isMainnet => {
   if (isMainnet) {
-    return { outPoint: {
-      txHash: "0x71a7ba8fc96349fea0ed3a5c47992e3b4084b031a42264a018e0072e8172e46c",
-      index: "0x0",
-    }, depType: 'depGroup' }
+    return {
+      outPoint: {
+        txHash: '0x71a7ba8fc96349fea0ed3a5c47992e3b4084b031a42264a018e0072e8172e46c',
+        index: '0x0',
+      },
+      depType: 'depGroup',
+    }
   }
-  return { outPoint: {
-      txHash: "0xf8de3bb47d055cdf460d93a2a6e1b05f7432f9777c8c474abf4eec1d4aee5d37",
-      index: "0x0",
-    }, depType: 'depGroup' }
+  return {
+    outPoint: {
+      txHash: '0xf8de3bb47d055cdf460d93a2a6e1b05f7432f9777c8c474abf4eec1d4aee5d37',
+      index: '0x0',
+    },
+    depType: 'depGroup',
+  }
 }
 
 const run = async () => {
   // True for mainnet and false for testnet
-  const isMainnet = false
+  const isMainnet = true
 
-  const service: Service = {
+  const service = {
     collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
     aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
   }
@@ -39,7 +46,7 @@ const run = async () => {
 
   const registryLock = getAlwaysSuccessLock(isMainnet)
 
-  let keyMap = new Map<string, string>()
+  let keyMap = new Map()
   keyMap.set(scriptToHash(registryLock), '')
   keyMap.set(scriptToHash(provideCKBLock), TEST_PRIVATE_KEY)
 
@@ -50,7 +57,7 @@ const run = async () => {
 
   const transactionHash = rawTransactionToHash(rawTx)
 
-  const signedWitnesses = signWitnesses(keyMap)({
+  const signedWitnesses = ckb.signWitnesses(keyMap)({
     transactionHash,
     witnesses: rawTx.witnesses,
     inputCells: cells,
