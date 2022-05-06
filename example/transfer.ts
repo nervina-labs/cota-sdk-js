@@ -37,7 +37,7 @@ const run = async () => {
   const transfers: TransferWithdrawal[] = [
     {
       cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
-      tokenIndex: "0x0000000a",
+      tokenIndex: "0x00000013",
       toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
     },
   ]
