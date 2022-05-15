@@ -66,7 +66,7 @@ export class Aggregator {
           headers: {
             'Content-Type': 'application/json',
           },
-          timeout: 300000,
+          timeout: 3000000,
           data: body,
         })
       ).data
