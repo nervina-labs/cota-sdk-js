@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@nervina-labs/cota-sdk@0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.5.0.tgz#8095a3aec3d83c0cc8fc35574d6a4cbfd031b365"
-  integrity sha512-Yi48wnG+ykXrDYVgvnH3CACovhvTYw766+6qD5LsBalYCs7QWZwhhuaYq43hQb0N8G2xGrbPa0xR/qwZkew3/Q==
+"@nervina-labs/cota-sdk@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.5.1.tgz#84494e6da0f25bd9625a89b5ac81a40c814138c4"
+  integrity sha512-eeYV0uRM5VbLd54eaaxdpcN+k9kXGTMe4hHis6ECv/1JKxJAaW2p5xoMnnLD1cMYy2Om87zLuXkzB/rI8tv+XA==
   dependencies:
     "@nervosnetwork/ckb-sdk-core" "^0.102.3"
     "@nervosnetwork/ckb-sdk-utils" "^0.102.3"
