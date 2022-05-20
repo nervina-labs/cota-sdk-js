@@ -28,11 +28,6 @@ export const generateClaimCotaTx = async (
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const withdrawalLockScript = serializeScript(withdrawalLock)
-  const withdrawalCotaCells = await service.collector.getCells(withdrawalLock, cotaType)
-  if (!withdrawalCotaCells || withdrawalCotaCells.length === 0) {
-    throw new Error("Withdrawal cota cell doesn't exist")
-  }
-  const withdrawalCotaCell = withdrawalCotaCells[0]
 
   const claimReq: ClaimReq = {
     lockScript: serializeScript(cotaLock),
@@ -40,16 +35,15 @@ export const generateClaimCotaTx = async (
     claims: claims,
   }
 
-  const { smtRootHash, claimSmtEntry } = await service.aggregator.generateClaimCotaSmt(claimReq)
+  const { smtRootHash, claimSmtEntry, withdrawBlockHash } = await service.aggregator.generateClaimCotaSmt(claimReq)
   const outputsData = [`0x01${smtRootHash}`]
-
-  const withdrawalCellDep: CKBComponents.CellDep = { outPoint: withdrawalCotaCell.outPoint, depType: 'code' }
-  const cellDeps = [withdrawalCellDep, getCotaCellDep(isMainnet)]
+  const cellDeps = [getCotaCellDep(isMainnet)]
+  const headerDeps = [`0x${withdrawBlockHash}`]
 
   const rawTx = {
     version: '0x0',
     cellDeps,
-    headerDeps: [],
+    headerDeps,
     inputs,
     outputs,
     outputsData,
