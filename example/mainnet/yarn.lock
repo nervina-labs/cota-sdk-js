@@ -2,7 +2,11 @@
 # yarn lockfile v1
 
 
+<<<<<<< HEAD
 "@nervina-labs/cota-sdk@0.5.3":
+=======
+"@nervina-labs/cota-sdk@0.5.2":
+>>>>>>> 6ff0f65e94997227580226d8953f9015201e6e6b
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.5.2.tgz#2b17a2e1fc2e27740474cacbff2e28bd6bbb9a6a"
   integrity sha512-dhDF8wl26uxKOGGJSLQDJCyCWV4L9RkgmmTd2gNuL+BQacxUSRYU4cj99o8mf+peARKdiNIBuMUCJhk4V++JQQ==

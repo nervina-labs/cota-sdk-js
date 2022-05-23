@@ -2,6 +2,7 @@ import axios from 'axios'
 import CKB from '@nervosnetwork/ckb-sdk-core'
 import { toCamelcase } from '../utils/case-parser'
 import { IndexerCell, CollectResult } from '../types/collector'
+import { MIN_CAPACITY } from '../constants'
 
 export class Collector {
   private ckbNodeUrl: string
@@ -79,12 +80,15 @@ export class Collector {
         since: '0x0',
       })
       sum = sum + BigInt(cell.output.capacity)
-      if (sum >= needCapacity + fee) {
+      if (sum >= needCapacity + MIN_CAPACITY + fee) {
         break
       }
     }
     if (sum < needCapacity + fee) {
       throw Error('Capacity not enough')
+    }
+    if (sum < needCapacity + MIN_CAPACITY + fee) {
+      throw Error('Capacity not enough for change')
     }
     return { inputs, capacity: sum }
   }
