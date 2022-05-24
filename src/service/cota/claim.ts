@@ -36,7 +36,7 @@ export const generateClaimCotaTx = async (
   }
 
   const { smtRootHash, claimSmtEntry, withdrawBlockHash } = await service.aggregator.generateClaimCotaSmt(claimReq)
-  const outputsData = [`0x01${smtRootHash}`]
+  const outputsData = [`0x02${smtRootHash}`]
   const cellDeps = [getCotaCellDep(isMainnet)]
   const headerDeps = [`0x${withdrawBlockHash}`]
 

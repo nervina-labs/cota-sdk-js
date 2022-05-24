@@ -38,7 +38,7 @@ export const generateTransferUpdateCotaTx = async (
   const { smtRootHash, transferUpdateSmtEntry, withdrawBlockHash } = await service.aggregator.generateTransferUpdateCotaSmt(
     transferUpdateReq,
   )
-  const outputsData = [`0x01${smtRootHash}`]
+  const outputsData = [`0x02${smtRootHash}`]
 
   const cellDeps = [getCotaCellDep(isMainnet)]
   const headerDeps = [`0x${withdrawBlockHash}`]
