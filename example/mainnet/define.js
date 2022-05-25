@@ -41,7 +41,9 @@ const run = async () => {
     image: 'https://oss.jinse.cc/production/03249d00-6b65-4aac-9147-a6d5d9127542.png',
   }
 
-  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo, FEE, isMainnet)
+  const total = 1000
+
+  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, total, '0xc0', cotaInfo, FEE, isMainnet)
 
   console.log(`cotaId: ${cotaId}`)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))

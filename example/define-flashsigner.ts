@@ -19,12 +19,15 @@ const run = async () => {
   const defineLock = addressToScript(TEST_ADDRESS)
 
   const cotaInfo = {
-    name: "First Step",
-    description: "First step to Blockchain mass adoption. NFT platform launch memento.\n\n-- Nervina Labs & Lay2 Tech, 4/30/2021.",
-    image: "https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png",
+    name: 'First Step',
+    description:
+      'First step to Blockchain mass adoption. NFT platform launch memento.\n\n-- Nervina Labs & Lay2 Tech, 4/30/2021.',
+    image: 'https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png',
   }
 
-  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, 0, '0x00', cotaInfo, FEE, isMainnet)
+  const total = 1000
+
+  let { rawTx, cotaId } = await generateDefineCotaTx(service, defineLock, total, '0xc0', cotaInfo, FEE, isMainnet)
 
   console.log(`cotaId: ${cotaId}`)
   const flashsingerDep: CKBComponents.CellDep = {
