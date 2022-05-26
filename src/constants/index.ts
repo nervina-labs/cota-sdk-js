@@ -15,7 +15,7 @@ const TestnetInfo = {
   } as CKBComponents.Script,
 
   CotaTypeDep: {
-    outPoint: { txHash: '0xbffc49b70a5919b180296e111604be59f1ce881e6c93fa93ea562feb269c219b', index: '0x0' },
+    outPoint: { txHash: '0x709f733f72875dc55e5f772b34ab243eaf098e087ca8ab772441896fb2711472', index: '0x0' },
     depType: 'depGroup',
   } as CKBComponents.CellDep,
 
@@ -45,7 +45,7 @@ const MainnetInfo = {
   } as CKBComponents.Script,
 
   CotaTypeDep: {
-    outPoint: { txHash: '0xf4421fad49a96ebc3d8f07cb328b0373142b9b111d623272167d04668a3234ee', index: '0x0' },
+    outPoint: { txHash: '0x207c0ab1a25f63198c0cb73a9f201585ac39619e0a32cb2339e7cd95858dbe72', index: '0x0' },
     depType: 'depGroup',
   } as CKBComponents.CellDep,
 
