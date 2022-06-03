@@ -44,7 +44,7 @@
     "prettier": "2.6.2",
     "ts-node": "10.8.0",
     "tslib": "2.4.0",
-    "typescript": "4.7.2"
+    "typescript": "4.7.3"
   },
   "homepage": "https://github.com/nervina-labs/cota-sdk-js#readme"
 }
