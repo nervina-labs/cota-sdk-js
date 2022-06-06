@@ -62,7 +62,7 @@ export const generateMintCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: `0x02${mintSmtEntry}`, outputType: '' },
+    i > 0 ? '' : { lock: '', inputType: `0x02${mintSmtEntry}`, outputType: '' },
   )
   return rawTx
 }
