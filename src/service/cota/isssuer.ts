@@ -54,7 +54,7 @@ export const generateIssuerInfoTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: '', outputType: generateIssuerMetadata(issuerInfo) },
+    i > 0 ? '' : { lock: '', inputType: '', outputType: generateIssuerMetadata(issuerInfo) },
   )
   return rawTx
 }

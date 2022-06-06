@@ -40,7 +40,7 @@ export const generateUpdateCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: `0x05${updateSmtEntry}`, outputType: '' },
+    i > 0 ? '' : { lock: '', inputType: `0x05${updateSmtEntry}`, outputType: '' },
   )
   return rawTx
 }
