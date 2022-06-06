@@ -84,7 +84,7 @@ export const generateDefineCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: `0x01${defineSmtEntry}`, outputType: generateCotaMetadata(cotaInfo, cotaId) },
+    i > 0 ? '' : { lock: '', inputType: `0x01${defineSmtEntry}`, outputType: generateCotaMetadata(cotaInfo, cotaId) },
   )
   return { rawTx, cotaId }
 }

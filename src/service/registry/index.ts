@@ -92,6 +92,6 @@ export const generateRegisterCotaTx = async (
   }
   const registryWitness = serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' })
   const emptyWitness = { lock: '', inputType: '', outputType: '' }
-  rawTx.witnesses = rawTx.inputs.map((_, i) => (i === 0 ? registryWitness : i === 1 ? emptyWitness : '0x'))
+  rawTx.witnesses = rawTx.inputs.map((_, i) => (i === 0 ? registryWitness : i === 1 ? emptyWitness : ''))
   return rawTx
 }
