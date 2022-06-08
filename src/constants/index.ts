@@ -64,8 +64,9 @@ const MainnetInfo = {
 export const getCotaTypeScript = (isMainnet = false) =>
   isMainnet ? MainnetInfo.CotaTypeScript : TestnetInfo.CotaTypeScript
 
-export const getReistryTypeScript = (isMainnet = false) =>
-  isMainnet ? MainnetInfo.RegistryTypeScript : TestnetInfo.RegistryTypeScript
+export function getRegistryTypeScript(isMainnet = false) {
+  return isMainnet ? MainnetInfo.RegistryTypeScript : TestnetInfo.RegistryTypeScript
+}
 
 export const getCotaCellDep = (isMainnet = false) => (isMainnet ? MainnetInfo.CotaTypeDep : TestnetInfo.CotaTypeDep)
 
