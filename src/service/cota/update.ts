@@ -28,7 +28,7 @@ export const generateUpdateCotaTx = async (
     nfts: cotaNfts,
   }
   const { smtRootHash, updateSmtEntry } = await service.aggregator.generateUpdateCotaSmt(updateReq)
-  const outputsData = [`0x01${smtRootHash}`]
+  const outputsData = [`0x02${smtRootHash}`]
   const cellDeps = [getCotaCellDep(isMainnet)]
   const rawTx = {
     version: '0x0',

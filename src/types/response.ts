@@ -34,12 +34,14 @@ export interface WithdrawalResp extends SmtResp {
 export interface TransferResp extends SmtResp {
   smtRootHash: Byte32
   transferSmtEntry: Bytes
+  withdrawBlockHash: Byte32
   blockNumber: bigint
 }
 
 export interface ClaimResp extends SmtResp {
   smtRootHash: Byte32
   claimSmtEntry: Bytes
+  withdrawBlockHash: Byte32
   blockNumber: bigint
 }
 
@@ -52,12 +54,14 @@ export interface UpdateResp extends SmtResp {
 export interface ClaimUpdateResp extends SmtResp {
   smtRootHash: Byte32
   claimUpdateSmtEntry: Bytes
+  withdrawBlockHash: Byte32
   blockNumber: bigint
 }
 
 export interface TransferUpdateResp extends SmtResp {
   smtRootHash: Byte32
   transferUpdateSmtEntry: Bytes
+  withdrawBlockHash: Byte32
   blockNumber: bigint
 }
 

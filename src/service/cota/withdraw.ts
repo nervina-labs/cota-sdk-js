@@ -31,7 +31,7 @@ export const generateWithdrawCotaTx = async (
     withdrawals: withdrawals,
   }
   const { smtRootHash, withdrawalSmtEntry } = await service.aggregator.generateWithdrawalCotaSmt(withdrawalReq)
-  const outputsData = [`0x01${smtRootHash}`]
+  const outputsData = [`0x02${smtRootHash}`]
   const cellDeps = [getCotaCellDep(isMainnet)]
   const rawTx = {
     version: '0x0',

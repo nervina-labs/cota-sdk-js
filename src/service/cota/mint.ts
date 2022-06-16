@@ -47,7 +47,7 @@ export const generateMintCotaTx = async (
   }
 
   const { smtRootHash, mintSmtEntry } = await service.aggregator.generateMintCotaSmt(mintReq)
-  const cotaCellData = `0x01${smtRootHash}`
+  const cotaCellData = `0x02${smtRootHash}`
 
   const outputsData = [cotaCellData]
   const cellDeps = [getCotaCellDep(isMainnet)]
