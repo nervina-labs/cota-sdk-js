@@ -3,19 +3,19 @@ export const MIN_CAPACITY = BigInt(61) * BigInt(100000000)
 
 const TestnetInfo = {
   RegistryTypeScript: {
-    codeHash: '0xc32f3f0a54895468537dc86344766a78a2702ab28e4885afec5118f7f49d8c1b',
+    codeHash: '0x9302db6cc1344b81a5efee06962abcb40427ecfcbe69d471b01b2658ed948075',
     hashType: 'type',
-    args: '0xcb3e4801d06f3c269ae559499bb96adeaea6e425',
+    args: '0xf9910364e0ca81a0e074f3aa42fe78cfcc880da6',
   } as CKBComponents.Script,
 
   CotaTypeScript: {
-    codeHash: '0x109cee8132469a37c194e9f391dfed96caf1b557ca85e604ec415f6da7a79308',
+    codeHash: '0x89cd8003a0eaf8e65e0c31525b7d1d5c1becefd2ea75bb4cff87810ae37764d8',
     hashType: 'type',
     args: '0x',
   } as CKBComponents.Script,
 
   CotaTypeDep: {
-    outPoint: { txHash: '0x060d61528042ad956464237f89abbae8e25caa3d5f9cd33ee397aae4a295f991', index: '0x0' },
+    outPoint: { txHash: '0xfa683440f605af7cc117755f8bcf6acec70fc4a69265602117810dfa41444159', index: '0x0' },
     depType: 'depGroup',
   } as CKBComponents.CellDep,
 
