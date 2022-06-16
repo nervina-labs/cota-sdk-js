@@ -4,7 +4,7 @@ import {
   FEE,
   getAlwaysSuccessLock,
   getCotaTypeScript,
-  getReistryTypeScript,
+  getRegistryTypeScript,
   getAlwaysSuccessCellDep,
   getCotaCellDep,
 } from '../../constants'
@@ -47,7 +47,7 @@ export const generateRegisterCotaTx = async (
 ): Promise<CKBComponents.RawTransactionToSign> => {
   const cotaCount = BigInt(cotaLocks.length)
   const registryLock = getAlwaysSuccessLock(isMainnet)
-  const registryType = getReistryTypeScript(isMainnet)
+  const registryType = getRegistryTypeScript(isMainnet)
   const registryCells = await service.collector.getCells(registryLock, registryType)
   if (!registryCells || registryCells.length === 0) {
     throw new Error("Registry cell doesn't exist")
@@ -71,13 +71,13 @@ export const generateRegisterCotaTx = async (
   let outputs = await generateCotaOutputs(capacity, cotaLocks, lock, isMainnet)
   outputs = [registryCell.output].concat(outputs)
   const length = outputs.length
-  outputs[length-1].capacity = `0x${(BigInt(outputs[length-1].capacity) - FEE).toString(16)}`
+  outputs[length - 1].capacity = `0x${(BigInt(outputs[length - 1].capacity) - FEE).toString(16)}`
 
   const lockHashes = cotaLocks.map(lock => scriptToHash(lock))
   const { smtRootHash, registrySmtEntry } = await service.aggregator.generateRegisterCotaSmt(lockHashes)
   const registryCellData = `0x00${smtRootHash}`
 
-  const outputsData = outputs.map((_, i) => (i === 0 ? registryCellData : i !== outputs.length - 1 ? '0x01' : '0x'))
+  const outputsData = outputs.map((_, i) => (i === 0 ? registryCellData : i !== outputs.length - 1 ? '0x02' : '0x'))
 
   const cellDeps = [getAlwaysSuccessCellDep(isMainnet), getCotaCellDep(isMainnet)]
 

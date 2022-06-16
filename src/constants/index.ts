@@ -15,7 +15,7 @@ const TestnetInfo = {
   } as CKBComponents.Script,
 
   CotaTypeDep: {
-    outPoint: { txHash: '0x709f733f72875dc55e5f772b34ab243eaf098e087ca8ab772441896fb2711472', index: '0x0' },
+    outPoint: { txHash: '0xfa683440f605af7cc117755f8bcf6acec70fc4a69265602117810dfa41444159', index: '0x0' },
     depType: 'depGroup',
   } as CKBComponents.CellDep,
 
@@ -64,8 +64,9 @@ const MainnetInfo = {
 export const getCotaTypeScript = (isMainnet = false) =>
   isMainnet ? MainnetInfo.CotaTypeScript : TestnetInfo.CotaTypeScript
 
-export const getReistryTypeScript = (isMainnet = false) =>
-  isMainnet ? MainnetInfo.RegistryTypeScript : TestnetInfo.RegistryTypeScript
+export function getRegistryTypeScript(isMainnet = false) {
+  return isMainnet ? MainnetInfo.RegistryTypeScript : TestnetInfo.RegistryTypeScript
+}
 
 export const getCotaCellDep = (isMainnet = false) => (isMainnet ? MainnetInfo.CotaTypeDep : TestnetInfo.CotaTypeDep)
 

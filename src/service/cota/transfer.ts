@@ -28,11 +28,6 @@ export const generateTransferCotaTx = async (
 
   const cotaLockScript = serializeScript(cotaLock)
   const withdrawalLockScript = serializeScript(withdrawalLock)
-  const withdrawalCotaCells = await service.collector.getCells(withdrawalLock, cotaType)
-  if (!withdrawalCotaCells || withdrawalCotaCells.length === 0) {
-    throw new Error("Withdrawal cota cell doesn't exist")
-  }
-  const withdrawalCotaCell = withdrawalCotaCells[0]
 
   const transferReq: TransferReq = {
     lockScript: cotaLockScript,
@@ -40,15 +35,16 @@ export const generateTransferCotaTx = async (
     transferOutPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
     transfers,
   }
-  const { smtRootHash, transferSmtEntry } = await service.aggregator.generateTransferCotaSmt(transferReq)
-  const outputsData = [`0x01${smtRootHash}`]
+  const { smtRootHash, transferSmtEntry, withdrawBlockHash } = await service.aggregator.generateTransferCotaSmt(transferReq)
+  const outputsData = [`0x02${smtRootHash}`]
 
-  const withdrawalCellDep: CKBComponents.CellDep = { outPoint: withdrawalCotaCell.outPoint, depType: 'code' }
-  const cellDeps = [withdrawalCellDep, getCotaCellDep(isMainnet)]
+  const cellDeps = [getCotaCellDep(isMainnet)]
+  const headerDeps = [`0x${withdrawBlockHash}`]
+  
   const rawTx = {
     version: '0x0',
     cellDeps,
-    headerDeps: [],
+    headerDeps,
     inputs,
     outputs,
     outputsData,
