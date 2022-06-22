@@ -51,7 +51,7 @@ export const generateTransferCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '' : { lock: '', inputType: `0x06${transferSmtEntry}`, outputType: '' },
+    i > 0 ? '0x' : { lock: '', inputType: `0x06${transferSmtEntry}`, outputType: '' },
   )
   return rawTx
 }
