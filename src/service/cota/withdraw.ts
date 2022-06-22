@@ -43,7 +43,7 @@ export const generateWithdrawCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '' : { lock: '', inputType: `0x03${withdrawalSmtEntry}`, outputType: '' },
+    i > 0 ? '0x' : { lock: '', inputType: `0x03${withdrawalSmtEntry}`, outputType: '' },
   )
   return rawTx
 }

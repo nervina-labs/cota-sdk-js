@@ -28,14 +28,14 @@ export const generateMintCotaTx = async (
   outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const cotaId = append0x(mintCotaInfo.cotaId)
-  
+
   let withdrawals = mintCotaInfo.withdrawals
   const isTokenIndexNull = withdrawals.some(withdrawal => withdrawal.tokenIndex == null || withdrawal.tokenIndex === '')
   if (isTokenIndexNull) {
-    const { issued } = await service.aggregator.getDefineInfo({cotaId})
+    const { issued } = await service.aggregator.getDefineInfo({ cotaId })
     withdrawals = withdrawals.map((withdrawal, index) => ({
       ...withdrawal,
-      tokenIndex: append0x(u32ToBe(issued + index))
+      tokenIndex: append0x(u32ToBe(issued + index)),
     }))
   }
 
@@ -62,7 +62,7 @@ export const generateMintCotaTx = async (
     witnesses: [],
   }
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '' : { lock: '', inputType: `0x02${mintSmtEntry}`, outputType: '' },
+    i > 0 ? '0x' : { lock: '', inputType: `0x02${mintSmtEntry}`, outputType: '' },
   )
   return rawTx
 }
