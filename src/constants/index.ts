@@ -1,4 +1,4 @@
-export const FEE = BigInt(160000)
+export const FEE = BigInt(30000)
 export const MIN_CAPACITY = BigInt(61) * BigInt(100000000)
 
 const TestnetInfo = {
