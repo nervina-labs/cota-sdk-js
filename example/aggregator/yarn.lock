@@ -27,10 +27,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@nervina-labs/cota-sdk@0.5.6":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.5.6.tgz#942d9e69b5f39dcdd23bf28e7d7ed7e0b345100a"
-  integrity sha512-xCTswdASpZWQ2lxZBl4IsQmA1m1RcA+kruCdZoi2zlEJwnG1Y4mV4BbDECbMKecwlBY02z2PEsF6HWDyjVhpnA==
+"@nervina-labs/cota-sdk@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.6.0.tgz#5fa479ef96946f818e19c07f54726c1890db9de0"
+  integrity sha512-dEztdIMqR3si2rH26QlzXbSf3kr8fKHsgxyRq/1IsSAR7ykyG5Xae9wE+wook9BYbDBEfti+bXe/nHIggUvrYQ==
   dependencies:
     "@nervosnetwork/ckb-sdk-core" "^0.103.0"
     "@nervosnetwork/ckb-sdk-utils" "^0.103.0"
@@ -346,10 +346,10 @@ type-fest@^1.2.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.4.0.tgz#e9fb813fe3bf1744ec359d55d1affefa76f14be1"
   integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
-typescript@4.7.3:
-  version "4.7.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.3.tgz#8364b502d5257b540f9de4c40be84c98e23a129d"
-  integrity sha512-WOkT3XYvrpXx4vMMqlD+8R8R37fZkjyLGlxavMc4iB8lrl8L0DeTcHbYgw/v0N/z9wAFsgBhcsF0ruoySS22mA==
+typescript@4.7.4:
+  version "4.7.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
+  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
 
 v8-compile-cache-lib@^3.0.1:
   version "3.0.1"
