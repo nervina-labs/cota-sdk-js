@@ -6,7 +6,7 @@
 
 JavaScript SDK for [CoTA](https://talk.nervos.org/t/rfc-cota-a-compact-token-aggregator-standard-for-extremely-low-cost-nfts-and-fts/6338).
 
-[CoTA Docs](https://developer.mibao.net/docs/develop/cota/overview)
+[CoTA Docs](https://cotadev.io)
 
 ## Installation
 
