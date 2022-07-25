@@ -51,7 +51,7 @@ export class Aggregator {
 
   private async baseRPC(method: string, req: SmtReq, url = this.cotaUrl): Promise<SmtResp | undefined> {
     let payload = {
-      id: 1,
+      id: payloadId(),
       jsonrpc: '2.0',
       method,
       params: toSnakeCase(req),
@@ -162,3 +162,5 @@ const convert = (req: GetCotaReq) => ({
   page: req.page.toString(),
   pageSize: req.pageSize.toString(),
 })
+
+const payloadId = () => Date.now()
