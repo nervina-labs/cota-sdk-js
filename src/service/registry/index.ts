@@ -95,3 +95,45 @@ export const generateRegisterCotaTx = async (
   rawTx.witnesses = rawTx.inputs.map((_, i) => (i === 0 ? registryWitness : i === 1 ? emptyWitness : '0x'))
   return rawTx
 }
+
+
+export const generateUpdateCcidsTx = async (
+  service: Service,
+  isMainnet = false,
+): Promise<CKBComponents.RawTransactionToSign> => {
+  const registryLock = getAlwaysSuccessLock(isMainnet)
+  const registryType = getRegistryTypeScript(isMainnet)
+  const registryCells = await service.collector.getCells(registryLock, registryType)
+  if (!registryCells || registryCells.length === 0) {
+    throw new Error("Registry cell doesn't exist")
+  }
+  let registryCell = registryCells[0]
+  let inputs = [
+    {
+      previousOutput: registryCell.outPoint,
+      since: '0x0',
+    },
+  ]
+
+  let outputs = [registryCell.output]
+  outputs[0].capacity = `0x${(BigInt(outputs[length - 1].capacity) - FEE).toString(16)}`
+
+  const { smtRootHash, registrySmtEntry } = await service.aggregator.generateUpdateCcidsSmt()
+  const registryCellData = `0x00${smtRootHash}`
+
+  const outputsData = [registryCellData]
+
+  const cellDeps = [getAlwaysSuccessCellDep(isMainnet)]
+  const registryWitness = serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' })
+
+  let rawTx = {
+    version: '0x0',
+    cellDeps,
+    headerDeps: [],
+    inputs,
+    outputs,
+    outputsData,
+    witnesses: [registryWitness],
+  }
+  return rawTx
+}
