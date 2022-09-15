@@ -5,6 +5,7 @@ export interface SmtResp {}
 export interface RegistryResp {
   smtRootHash: Byte32
   registrySmtEntry: Bytes
+  outputAccountNum: bigint
   blockNumber: bigint
 }
 

@@ -8,7 +8,7 @@ import {
   getAlwaysSuccessCellDep,
   getCotaCellDep,
 } from '../../constants'
-import { append0x, remove0x } from '../../utils/hex'
+import { append0x, remove0x, u64ToBe } from '../../utils/hex'
 
 const COTA_CELL_CAPACITY = BigInt(150) * BigInt(100000000)
 
@@ -74,8 +74,8 @@ export const generateRegisterCotaTx = async (
   outputs[length - 1].capacity = `0x${(BigInt(outputs[length - 1].capacity) - FEE).toString(16)}`
 
   const lockHashes = cotaLocks.map(lock => scriptToHash(lock))
-  const { smtRootHash, registrySmtEntry } = await service.aggregator.generateRegisterCotaSmt(lockHashes)
-  const registryCellData = `0x00${smtRootHash}`
+  const { smtRootHash, registrySmtEntry, outputAccountNum } = await service.aggregator.generateRegisterCotaSmt(lockHashes)
+  const registryCellData = `0x01${smtRootHash}${u64ToBe(BigInt(outputAccountNum))}`
 
   const outputsData = outputs.map((_, i) => (i === 0 ? registryCellData : i !== outputs.length - 1 ? '0x02' : '0x'))
 
@@ -116,14 +116,14 @@ export const generateUpdateCcidsTx = async (
   ]
 
   let outputs = [registryCell.output]
-  outputs[0].capacity = `0x${(BigInt(outputs[length - 1].capacity) - FEE).toString(16)}`
+  outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - FEE).toString(16)}`
 
-  const { smtRootHash, registrySmtEntry } = await service.aggregator.generateUpdateCcidsSmt()
-  const registryCellData = `0x01${smtRootHash}`
+  const { smtRootHash, registrySmtEntry, outputAccountNum } = await service.aggregator.generateUpdateCcidsSmt()
+  const registryCellData = `0x01${smtRootHash}${u64ToBe(BigInt(outputAccountNum))}`
 
   const outputsData = [registryCellData]
 
-  const cellDeps = [getAlwaysSuccessCellDep(isMainnet)]
+  const cellDeps = [getAlwaysSuccessCellDep(isMainnet), getCotaCellDep(isMainnet)]
   const registryWitness = serializeWitnessArgs({ lock: '', inputType: append0x(registrySmtEntry), outputType: '' })
 
   let rawTx = {

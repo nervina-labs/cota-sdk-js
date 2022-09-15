@@ -62,6 +62,16 @@ export const u64ToLe = (u64: bigint): string => {
   return `${viewLeft}${viewRight}`
 }
 
+export const u64ToBe = (u64: bigint): string => {
+  if (typeof u64 !== 'bigint') {
+    throw new Error('u64 must be bigint')
+  }
+  const val = u64.toString(16).padStart(16, '0')
+  const viewLeft = u32ToBe(`0x${val.slice(0, 8)}`)
+  const viewRight = u32ToBe(`0x${val.slice(8)}`)
+  return `${viewLeft}${viewRight}`
+}
+
 export const utf8ToHex = (text: string) => {
   let result = text.trim()
   if (result.startsWith('0x')) {
