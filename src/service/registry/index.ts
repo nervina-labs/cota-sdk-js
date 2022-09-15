@@ -119,7 +119,7 @@ export const generateUpdateCcidsTx = async (
   outputs[0].capacity = `0x${(BigInt(outputs[length - 1].capacity) - FEE).toString(16)}`
 
   const { smtRootHash, registrySmtEntry } = await service.aggregator.generateUpdateCcidsSmt()
-  const registryCellData = `0x00${smtRootHash}`
+  const registryCellData = `0x01${smtRootHash}`
 
   const outputsData = [registryCellData]
 
