@@ -49,12 +49,12 @@ export class Aggregator {
     this.cotaUrl = cotaUrl
   }
 
-  private async baseRPC(method: string, req: SmtReq, url = this.cotaUrl): Promise<SmtResp | undefined> {
+  private async baseRPC(method: string, req: SmtReq | undefined, url = this.cotaUrl): Promise<SmtResp | undefined> {
     let payload = {
       id: payloadId(),
       jsonrpc: '2.0',
       method,
-      params: toSnakeCase(req),
+      params: req ? toSnakeCase(req) : null,
     }
     const body = JSON.stringify(payload, null, '')
     console.log(body)
@@ -82,6 +82,10 @@ export class Aggregator {
 
   async generateRegisterCotaSmt(lockHashes: Byte32[]): Promise<RegistryResp> {
     return (await this.baseRPC('register_cota_cells', lockHashes, this.registryUrl)) as Promise<RegistryResp>
+  }
+
+  async generateUpdateCcidsSmt(): Promise<RegistryResp> {
+    return (await this.baseRPC('update_registered_ccid', undefined, this.registryUrl)) as Promise<RegistryResp>
   }
 
   async checkReisteredLockHashes(lockHashes: Byte32[]): Promise<CheckRegisteredResp> {
