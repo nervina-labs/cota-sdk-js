@@ -99,6 +99,7 @@ export const generateRegisterCotaTx = async (
 
 export const generateUpdateCcidsTx = async (
   service: Service,
+  fee = FEE,
   isMainnet = false,
 ): Promise<CKBComponents.RawTransactionToSign> => {
   const registryLock = getAlwaysSuccessLock(isMainnet)
@@ -116,7 +117,7 @@ export const generateUpdateCcidsTx = async (
   ]
 
   let outputs = [registryCell.output]
-  outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - FEE).toString(16)}`
+  outputs[0].capacity = `0x${(BigInt(outputs[0].capacity) - fee).toString(16)}`
 
   const { smtRootHash, registrySmtEntry, outputAccountNum } = await service.aggregator.generateUpdateCcidsSmt()
   const registryCellData = `0x01${smtRootHash}${u64ToBe(BigInt(outputAccountNum))}`
