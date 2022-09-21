@@ -4,6 +4,6 @@
   "description": "The examples for mainnet",
   "license": "MIT",
   "dependencies": {
-    "@nervina-labs/cota-sdk": "0.6.2"
+    "@nervina-labs/cota-sdk": "0.6.3"
   }
 }
