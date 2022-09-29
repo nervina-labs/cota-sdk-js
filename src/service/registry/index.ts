@@ -16,6 +16,7 @@ const generateCotaOutputs = async (
   inputCapacity: bigint,
   cotaLocks: CKBComponents.Script[],
   changeLock: CKBComponents.Script,
+  fee: bigint,
   isMainnet: boolean,
 ): Promise<CKBComponents.CellOutput[]> => {
   let outputs: CKBComponents.CellOutput[] = cotaLocks.map(lock => {
@@ -29,7 +30,7 @@ const generateCotaOutputs = async (
   })
 
   const cotaCellsLength = BigInt(cotaLocks.length)
-  const changeCapacity = inputCapacity - FEE - COTA_CELL_CAPACITY * cotaCellsLength
+  const changeCapacity = inputCapacity - fee - COTA_CELL_CAPACITY * cotaCellsLength
   outputs.push({
     capacity: `0x${changeCapacity.toString(16)}`,
     lock: changeLock,
@@ -68,10 +69,10 @@ export const generateRegisterCotaTx = async (
   ]
   inputs = inputs.concat(normalInputs)
 
-  let outputs = await generateCotaOutputs(capacity, cotaLocks, lock, isMainnet)
+  let outputs = await generateCotaOutputs(capacity, cotaLocks, lock, fee, isMainnet)
   outputs = [registryCell.output].concat(outputs)
   const length = outputs.length
-  outputs[length - 1].capacity = `0x${(BigInt(outputs[length - 1].capacity) - FEE).toString(16)}`
+  outputs[length - 1].capacity = `0x${(BigInt(outputs[length - 1].capacity) - fee).toString(16)}`
 
   const lockHashes = cotaLocks.map(lock => scriptToHash(lock))
   const { smtRootHash, registrySmtEntry, outputAccountNum } = await service.aggregator.generateRegisterCotaSmt(lockHashes)
