@@ -162,7 +162,7 @@ export class Aggregator {
     return (await this.baseRPC('get_cota_count', req)) as Promise<GetCotaCountResp>
   }
 
-   async generateExtensionSmt(extension: ExtensionReq): Promise<ExtensionResp> {
+  async generateExtensionSmt(extension: ExtensionReq): Promise<ExtensionResp> {
     return (await this.baseRPC('generate_extension_smt', extension)) as Promise<ExtensionResp>
   }
 }

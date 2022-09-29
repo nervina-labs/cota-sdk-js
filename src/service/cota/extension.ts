@@ -46,7 +46,7 @@ export const generateExtensionTx = async (
     witnesses: [],
   } as any
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: `0xF0${extensionSmtEntry}`, outputType: '' },
+    i > 0 ? '0x' : { lock: '', inputType: `0xF1${extensionSmtEntry}`, outputType: '' },
   )
   return rawTx
 }
