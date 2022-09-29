@@ -146,3 +146,9 @@ export interface GetCotaCountResp {
   count: number
   blockNumber: bigint
 }
+
+export interface ExtensionResp extends SmtResp {
+  smtRootHash: Byte32
+  extensionSmtEntry: Bytes
+  blockNumber: bigint
+}

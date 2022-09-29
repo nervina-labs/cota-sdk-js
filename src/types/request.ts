@@ -118,3 +118,7 @@ export interface GetCotaCountReq extends SmtReq {
   lockScript: Bytes
   cotaId: Byte20
 }
+
+export interface ExtensionReq extends SmtReq {
+  lockScript: Bytes
+}
