@@ -35,12 +35,14 @@ export const generateTransferCotaTx = async (
     transferOutPoint: append0x(serializeOutPoint(cotaCell.outPoint).slice(26)),
     transfers,
   }
-  const { smtRootHash, transferSmtEntry, withdrawBlockHash } = await service.aggregator.generateTransferCotaSmt(transferReq)
+  const { smtRootHash, transferSmtEntry, withdrawBlockHash } = await service.aggregator.generateTransferCotaSmt(
+    transferReq,
+  )
   const outputsData = [`0x02${smtRootHash}`]
 
   const cellDeps = [getCotaCellDep(isMainnet)]
   const headerDeps = [`0x${withdrawBlockHash}`]
-  
+
   const rawTx = {
     version: '0x0',
     cellDeps,

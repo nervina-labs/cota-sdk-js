@@ -1,4 +1,4 @@
-import {  Service } from '../..'
+import { Service } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { CotaInfo, Hex } from '../../types'
 import { append0x, utf8ToHex, toSnakeCase } from '../../utils'
