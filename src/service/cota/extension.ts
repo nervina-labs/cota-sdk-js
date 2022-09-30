@@ -4,11 +4,17 @@ import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { ExtensionReq } from '../../types'
 
 
-export const generateExtensionTx = async (
+enum Action {
+  Add,
+  Update
+}
+
+const generateExtensionTx = async (
   service: Service,
   cotaLock: CKBComponents.Script,
   fee = FEE,
   isMainnet = false,
+  action: Action,
 ) => {
   const cotaType = getCotaTypeScript(isMainnet)
   const cotaCells = await service.collector.getCells(cotaLock, cotaType)
@@ -45,8 +51,26 @@ export const generateExtensionTx = async (
     outputsData,
     witnesses: [],
   } as any
+
+  const prefix = action == Action.Add ? '0xF0' : '0xF1'
   rawTx.witnesses = rawTx.inputs.map((_, i) =>
-    i > 0 ? '0x' : { lock: '', inputType: `0xF1${extensionSmtEntry}`, outputType: '' },
+    i > 0 ? '0x' : { lock: '', inputType: `${prefix}${extensionSmtEntry}`, outputType: '' },
   )
   return rawTx
 }
+
+
+export const generateAddExtensionTx = async (
+  service: Service,
+  cotaLock: CKBComponents.Script,
+  fee = FEE,
+  isMainnet = false
+) => await generateExtensionTx(service, cotaLock, fee, isMainnet, Action.Add)
+
+
+  export const generateUpdateExtensionTx = async (
+  service: Service,
+  cotaLock: CKBComponents.Script,
+  fee = FEE,
+  isMainnet = false
+) => await generateExtensionTx(service, cotaLock, fee, isMainnet, Action.Update)
