@@ -16,6 +16,7 @@ import {
   GetDefineInfoReq,
   GetIssuerInfoReq,
   GetCotaCountReq,
+  ExtensionReq,
 } from '../types/request'
 import {
   ClaimResp,
@@ -37,6 +38,7 @@ import {
   GetDefineInfoResp,
   GetIssuerInfoResp,
   GetCotaCountResp,
+  ExtensionResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -158,6 +160,10 @@ export class Aggregator {
 
   async getCotaCount(req: GetCotaCountReq): Promise<GetCotaCountResp> {
     return (await this.baseRPC('get_cota_count', req)) as Promise<GetCotaCountResp>
+  }
+
+  async generateExtensionSmt(extension: ExtensionReq): Promise<ExtensionResp> {
+    return (await this.baseRPC('generate_extension_smt', extension)) as Promise<ExtensionResp>
   }
 }
 

@@ -75,7 +75,9 @@ export const generateRegisterCotaTx = async (
   outputs[length - 1].capacity = `0x${(BigInt(outputs[length - 1].capacity) - fee).toString(16)}`
 
   const lockHashes = cotaLocks.map(lock => scriptToHash(lock))
-  const { smtRootHash, registrySmtEntry, outputAccountNum } = await service.aggregator.generateRegisterCotaSmt(lockHashes)
+  const { smtRootHash, registrySmtEntry, outputAccountNum } = await service.aggregator.generateRegisterCotaSmt(
+    lockHashes,
+  )
   const registryCellData = `0x01${smtRootHash}${u64ToBe(BigInt(outputAccountNum))}`
 
   const outputsData = outputs.map((_, i) => (i === 0 ? registryCellData : i !== outputs.length - 1 ? '0x02' : '0x'))
@@ -96,7 +98,6 @@ export const generateRegisterCotaTx = async (
   rawTx.witnesses = rawTx.inputs.map((_, i) => (i === 0 ? registryWitness : i === 1 ? emptyWitness : '0x'))
   return rawTx
 }
-
 
 export const generateUpdateCcidsTx = async (
   service: Service,
