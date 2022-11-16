@@ -56,7 +56,7 @@ export class Collector {
         headers: {
           'Content-Type': 'application/json',
         },
-        timeout: 20000,
+        timeout: 3000000,
         data: body,
       })
     ).data
