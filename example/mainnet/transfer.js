@@ -2,7 +2,7 @@ const { addressToScript, serializeScript } = require('@nervosnetwork/ckb-sdk-uti
 const { Collector, Aggregator, generateTransferCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
 const TEST_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
-const RECEIVER_PRIVATE_KEY = '0x65e4b4dc59d93349f0ceb3926ffcb8338808a54afe51338292ea6baa3784619f'
+const RECEIVER_PRIVATE_KEY = '0x-example'
 const RECEIVER_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
 const OTHER_ADDRESS = 'ckb1qyq0xt2728kgl0pfvqgvul92209z7vkxwezsmqz650'
 

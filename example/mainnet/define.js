@@ -2,7 +2,7 @@ const { addressToScript } = require('@nervosnetwork/ckb-sdk-utils')
 const { Collector, Aggregator, generateDefineCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
 // AliceMainnet
-const TEST_PRIVATE_KEY = '0x65e4b4dc59d93349f0ceb3926ffcb8338808a54afe51338292ea6baa3784619f'
+const TEST_PRIVATE_KEY = '0x-example'
 const TEST_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
 
 const secp256k1CellDep = isMainnet => {
