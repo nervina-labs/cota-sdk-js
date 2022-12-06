@@ -3,10 +3,9 @@ import { Service } from '../..'
 import { FEE, getCotaTypeScript, getCotaCellDep } from '../../constants'
 import { ExtensionReq } from '../../types'
 
-
 enum Action {
   Add,
-  Update
+  Update,
 }
 
 const generateExtensionTx = async (
@@ -59,18 +58,16 @@ const generateExtensionTx = async (
   return rawTx
 }
 
-
 export const generateAddExtensionTx = async (
   service: Service,
   cotaLock: CKBComponents.Script,
   fee = FEE,
-  isMainnet = false
+  isMainnet = false,
 ) => await generateExtensionTx(service, cotaLock, fee, isMainnet, Action.Add)
 
-
-  export const generateUpdateExtensionTx = async (
+export const generateUpdateExtensionTx = async (
   service: Service,
   cotaLock: CKBComponents.Script,
   fee = FEE,
-  isMainnet = false
+  isMainnet = false,
 ) => await generateExtensionTx(service, cotaLock, fee, isMainnet, Action.Update)
