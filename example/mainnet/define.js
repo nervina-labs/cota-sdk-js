@@ -2,7 +2,7 @@ const { addressToScript } = require('@nervosnetwork/ckb-sdk-utils')
 const { Collector, Aggregator, generateDefineCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
 // AliceMainnet
-const TEST_PRIVATE_KEY = '0x-example'
+const TEST_PRIVATE_KEY = '0x65e4b4dc59d93349f0ceb3926ffcb8338808a54afe51338292ea6baa3784619f'
 const TEST_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
 
 const secp256k1CellDep = isMainnet => {
@@ -29,8 +29,14 @@ const run = async () => {
   const isMainnet = true
 
   const service = {
-    collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://mainnet.ckb.dev/rpc',
+      ckbIndexerUrl: 'https://mainnet.ckb.dev/indexer',
+    }),
+    aggregator: new Aggregator({
+      registryUrl: 'http://localhost:3050',
+      cotaUrl: 'https://cota.nervina.dev/mainnet-aggregator',
+    }),
   }
   const ckb = service.collector.getCkb()
   const defineLock = addressToScript(TEST_ADDRESS)
@@ -48,10 +54,12 @@ const run = async () => {
   console.log(`cotaId: ${cotaId}`)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))
 
+  console.log(JSON.stringify(rawTx))
+
   const signedTx = ckb.signTransaction(TEST_PRIVATE_KEY)(rawTx)
   console.log(JSON.stringify(signedTx))
-  let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
-  console.info(`Define cota nft tx has been sent with tx hash ${txHash}`)
+  // let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
+  // console.info(`Define cota nft tx has been sent with tx hash ${txHash}`)
 }
 
 run()

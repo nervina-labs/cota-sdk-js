@@ -6,13 +6,15 @@ import { generateUpdateCcidsTx } from '../src/service/registry'
 import { Service } from '../src'
 import signWitnesses from '@nervosnetwork/ckb-sdk-core/lib/signWitnesses'
 
-
 const run = async () => {
   // True for mainnet and false for testnet
   const isMainnet = false
 
   const service: Service = {
-    collector: new Collector({ ckbNodeUrl: 'https://testnet.ckb.dev/rpc', ckbIndexerUrl: 'https://testnet.ckb.dev/indexer' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://testnet.ckb.dev/rpc',
+      ckbIndexerUrl: 'https://testnet.ckb.dev/indexer',
+    }),
     aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
   }
   const ckb = service.collector.getCkb()

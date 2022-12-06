@@ -23,7 +23,7 @@ const run = async () => {
       '0x490000001000000030000000310000009bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce80114000000dc70f33de86fdf381b4fc5bf092bb23d02774801',
     page: 0,
     pageSize: 3,
-    cotaId: "0xb066e0f068aa8be6548063a18d811c489a9e2141",
+    cotaId: '0xb066e0f068aa8be6548063a18d811c489a9e2141',
   })
   console.log(JSON.stringify(holdsWithCotaId))
 
@@ -63,7 +63,7 @@ const run = async () => {
   const cotaCount = await aggregator.getCotaCount({
     lockScript:
       '0x490000001000000030000000310000009bd7e06f3ecf4be0f2fcd2188b23f1b9fcc88e5d4b65a8637b17723bbda3cce80114000000dc70f33de86fdf381b4fc5bf092bb23d02774801',
-      cotaId: '0xb22585a8053af3fed0fd39127f5b1487ce08b756',
+    cotaId: '0xb22585a8053af3fed0fd39127f5b1487ce08b756',
   })
   console.log(JSON.stringify(cotaCount))
 }

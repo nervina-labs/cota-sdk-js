@@ -11,15 +11,21 @@ const OTHER_ADDRESS = 'ckt1qyqz8vxeyrv4nur4j27ktp34fmwnua9wuyqqggd748'
 
 const secp256k1CellDep = (isMainnet: boolean): CKBComponents.CellDep => {
   if (isMainnet) {
-    return { outPoint: {
-      txHash: "0x71a7ba8fc96349fea0ed3a5c47992e3b4084b031a42264a018e0072e8172e46c",
-      index: "0x0",
-    }, depType: 'depGroup' }
+    return {
+      outPoint: {
+        txHash: '0x71a7ba8fc96349fea0ed3a5c47992e3b4084b031a42264a018e0072e8172e46c',
+        index: '0x0',
+      },
+      depType: 'depGroup',
+    }
   }
-  return { outPoint: {
-      txHash: "0xf8de3bb47d055cdf460d93a2a6e1b05f7432f9777c8c474abf4eec1d4aee5d37",
-      index: "0x0",
-    }, depType: 'depGroup' }
+  return {
+    outPoint: {
+      txHash: '0xf8de3bb47d055cdf460d93a2a6e1b05f7432f9777c8c474abf4eec1d4aee5d37',
+      index: '0x0',
+    },
+    depType: 'depGroup',
+  }
 }
 
 const run = async () => {
@@ -37,7 +43,7 @@ const run = async () => {
   const transfers: TransferWithdrawal[] = [
     {
       cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
-      tokenIndex: "0x00000013",
+      tokenIndex: '0x00000013',
       toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
     },
   ]
@@ -50,5 +56,4 @@ const run = async () => {
   console.info(`Transfer cota nft tx has been sent with tx hash ${txHash}`)
 }
 
-
- run()
+run()

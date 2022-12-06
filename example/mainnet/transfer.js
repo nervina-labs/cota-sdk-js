@@ -2,7 +2,7 @@ const { addressToScript, serializeScript } = require('@nervosnetwork/ckb-sdk-uti
 const { Collector, Aggregator, generateTransferCotaTx, FEE } = require('@nervina-labs/cota-sdk')
 
 const TEST_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
-const RECEIVER_PRIVATE_KEY = '0x-example'
+const RECEIVER_PRIVATE_KEY = '0x65e4b4dc59d93349f0ceb3926ffcb8338808a54afe51338292ea6baa3784619f'
 const RECEIVER_ADDRESS = 'ckb1qyqxx0xdw7g67eu35nuj0f237eg8skpdctuqwx39xm'
 const OTHER_ADDRESS = 'ckb1qyq0xt2728kgl0pfvqgvul92209z7vkxwezsmqz650'
 
@@ -30,8 +30,14 @@ const run = async () => {
   const isMainnet = true
 
   const service = {
-    collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://mainnet.ckb.dev/rpc',
+      ckbIndexerUrl: 'https://mainnet.ckb.dev/indexer',
+    }),
+    aggregator: new Aggregator({
+      registryUrl: 'https://cota.nervina.dev/mainnet-registry-aggregator',
+      cotaUrl: 'https://cota.nervina.dev/mainnet-aggregator',
+    }),
   }
   const ckb = service.collector.getCkb()
   const cotaLock = addressToScript(RECEIVER_ADDRESS)
@@ -39,18 +45,22 @@ const run = async () => {
 
   const transfers = [
     {
-      cotaId: '0xae223946058e5b148045d11483df60b36dc28a30',
-      tokenIndex: '0x00000000',
+      cotaId: '0xc4a5cbf26b597acf3b35c74f61931c33aa16a55e',
+      tokenIndex: '0x00000008',
       toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
     },
   ]
   let rawTx = await generateTransferCotaTx(service, cotaLock, withdrawLock, transfers, FEE, isMainnet)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))
 
+  console.log(JSON.stringify(rawTx))
+
   const signedTx = ckb.signTransaction(RECEIVER_PRIVATE_KEY)(rawTx)
   console.log(JSON.stringify(signedTx))
-  let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
-  console.info(`Transfer cota nft tx has been sent with tx hash ${txHash}`)
+  const result = await ckb.rpc.dryRunTransaction(signedTx)
+  console.log(JSON.stringify(result))
+  // let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
+  // console.info(`Transfer cota nft tx has been sent with tx hash ${txHash}`)
 }
 
 run()
