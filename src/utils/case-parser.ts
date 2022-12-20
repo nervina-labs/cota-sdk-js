@@ -1,4 +1,4 @@
-import camelcaseKeys from 'camelcase-keys'
+import * as camelcaseKeys from 'camelcase-keys'
 import { toSnake } from 'convert-keys'
 
 export const toCamelcase = (object: any) => {
