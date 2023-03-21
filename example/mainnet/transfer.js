@@ -30,8 +30,14 @@ const run = async () => {
   const isMainnet = true
 
   const service = {
-    collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://mainnet.ckb.dev/rpc',
+      ckbIndexerUrl: 'https://mainnet.ckb.dev/indexer',
+    }),
+    aggregator: new Aggregator({
+      registryUrl: 'https://cota.nervina.dev/mainnet-registry-aggregator',
+      cotaUrl: 'https://cota.nervina.dev/mainnet-aggregator',
+    }),
   }
   const ckb = service.collector.getCkb()
   const cotaLock = addressToScript(RECEIVER_ADDRESS)
@@ -39,18 +45,22 @@ const run = async () => {
 
   const transfers = [
     {
-      cotaId: '0xae223946058e5b148045d11483df60b36dc28a30',
-      tokenIndex: '0x00000000',
+      cotaId: '0xc4a5cbf26b597acf3b35c74f61931c33aa16a55e',
+      tokenIndex: '0x00000008',
       toLockScript: serializeScript(addressToScript(OTHER_ADDRESS)),
     },
   ]
   let rawTx = await generateTransferCotaTx(service, cotaLock, withdrawLock, transfers, FEE, isMainnet)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))
 
+  console.log(JSON.stringify(rawTx))
+
   const signedTx = ckb.signTransaction(RECEIVER_PRIVATE_KEY)(rawTx)
   console.log(JSON.stringify(signedTx))
-  let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
-  console.info(`Transfer cota nft tx has been sent with tx hash ${txHash}`)
+  const result = await ckb.rpc.dryRunTransaction(signedTx)
+  console.log(JSON.stringify(result))
+  // let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
+  // console.info(`Transfer cota nft tx has been sent with tx hash ${txHash}`)
 }
 
 run()

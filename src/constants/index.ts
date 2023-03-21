@@ -45,7 +45,7 @@ const MainnetInfo = {
   } as CKBComponents.Script,
 
   CotaTypeDep: {
-    outPoint: { txHash: '0x875db3381ebe7a730676c110e1c0d78ae1bdd0c11beacb7db4db08e368c2cd95', index: '0x0' },
+    outPoint: { txHash: '0xabaa25237554f0d6c586dc010e7e85e6870bcfd9fb8773257ecacfbe1fd738a0', index: '0x0' },
     depType: 'depGroup',
   } as CKBComponents.CellDep,
 

@@ -29,8 +29,14 @@ const run = async () => {
   const isMainnet = true
 
   const service = {
-    collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://mainnet.ckb.dev/rpc',
+      ckbIndexerUrl: 'https://mainnet.ckb.dev/indexer',
+    }),
+    aggregator: new Aggregator({
+      registryUrl: 'http://localhost:3050',
+      cotaUrl: 'https://cota.nervina.dev/mainnet-aggregator',
+    }),
   }
   const ckb = service.collector.getCkb()
   const defineLock = addressToScript(TEST_ADDRESS)
@@ -48,10 +54,12 @@ const run = async () => {
   console.log(`cotaId: ${cotaId}`)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))
 
+  console.log(JSON.stringify(rawTx))
+
   const signedTx = ckb.signTransaction(TEST_PRIVATE_KEY)(rawTx)
   console.log(JSON.stringify(signedTx))
-  let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
-  console.info(`Define cota nft tx has been sent with tx hash ${txHash}`)
+  // let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
+  // console.info(`Define cota nft tx has been sent with tx hash ${txHash}`)
 }
 
 run()
