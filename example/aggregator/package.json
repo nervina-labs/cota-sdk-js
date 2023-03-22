@@ -8,7 +8,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@nervina-labs/cota-sdk": "0.8.0",
+    "@nervina-labs/cota-sdk": "0.9.0",
     "@types/node": "18.15.5",
     "ts-node": "10.9.1",
     "tslib": "2.5.0",
