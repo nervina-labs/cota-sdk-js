@@ -37,7 +37,7 @@
     "@typescript-eslint/parser": "5.49.0",
     "@babel/eslint-parser": "7.11.0",
     "eslint": "8.31.0",
-    "eslint-config-prettier": "8.6.0",
+    "eslint-config-prettier": "8.8.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.3",
