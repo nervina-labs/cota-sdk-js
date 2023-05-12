@@ -1,6 +1,6 @@
 {
   "name": "@nervina-labs/cota-sdk",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "The SDK of CoTA",
   "repository": "git@github.com:nervina-labs/cota-sdk-js.git",
   "author": "duanyytop <duanyytop@gmail.com>",

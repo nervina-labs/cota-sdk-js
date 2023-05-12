@@ -44,9 +44,7 @@ const run = async () => {
   }
   const ckb = service.collector.getCkb()
   const provideCKBLock = addressToScript(TEST_ADDRESS)
-  const unregisteredCotaLock = addressToScript(
-    'ckt1qyqdvq39qrxcw6hpl0lp07y0qu2659ml7h5sfz8s6a',
-  )
+  const unregisteredCotaLock = addressToScript('ckt1qyqdvq39qrxcw6hpl0lp07y0qu2659ml7h5sfz8s6a')
 
   let rawTx = await generateRegisterCotaTx(service, [unregisteredCotaLock], provideCKBLock, FEE, isMainnet)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))
