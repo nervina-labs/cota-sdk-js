@@ -33,12 +33,18 @@ const run = async () => {
   const isMainnet = false
 
   const service: Service = {
-    collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://testnet.ckbapp.dev/rpc',
+      ckbIndexerUrl: 'https://testnet.ckbapp.dev/indexer',
+    }),
+    aggregator: new Aggregator({
+      registryUrl: 'https://cota.nervina.dev/registry-aggregator',
+      cotaUrl: 'http://localhost:3030',
+    }),
   }
   const ckb = service.collector.getCkb()
   const provideCKBLock = addressToScript(TEST_ADDRESS)
-  const unregisteredCotaLock = addressToScript(TEST_ADDRESS)
+  const unregisteredCotaLock = addressToScript('ckt1qyqdvq39qrxcw6hpl0lp07y0qu2659ml7h5sfz8s6a')
 
   let rawTx = await generateRegisterCotaTx(service, [unregisteredCotaLock], provideCKBLock, FEE, isMainnet)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))

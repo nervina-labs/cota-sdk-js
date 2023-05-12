@@ -4,8 +4,8 @@ import { Aggregator } from '../src/aggregator'
 import { generateIssuerInfoTx } from '../src/service/cota'
 import { IssuerInfo, Service, FEE } from '../src'
 
-const TEST_PRIVATE_KEY = '0xc5bd09c9b954559c70a77d68bde95369e2ce910556ddc20f739080cde3b62ef2'
-const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
+const TEST_PRIVATE_KEY = '0x59df3d4584579a4b8ae77e4d7a851d68178a0e19dbbdd53b5daab543943e1b31'
+const TEST_ADDRESS = 'ckt1qyqp8ydxwz3p4vcmjwc2d7zqk4xhv707j80q4yrap2'
 
 const secp256k1CellDep = (isMainnet: boolean): CKBComponents.CellDep => {
   if (isMainnet) {
@@ -31,14 +31,20 @@ const run = async () => {
   const isMainnet = false
 
   const service: Service = {
-    collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://testnet.ckbapp.dev/rpc',
+      ckbIndexerUrl: 'https://testnet.ckbapp.dev/rpc',
+    }),
+    aggregator: new Aggregator({
+      registryUrl: 'https://cota.nervina.dev/registry-aggregator',
+      cotaUrl: 'https://cota.nervina.dev/aggregator',
+    }),
   }
   const ckb = service.collector.getCkb()
   const cotaLock = addressToScript(TEST_ADDRESS)
 
   const issuer: IssuerInfo = {
-    name: 'Nervina Labs',
+    name: 'Nervina Labs example',
     description: 'Melting Two Worlds Together.',
     avatar: 'https://i.loli.net/2021/04/29/IigbpOWP8fw9qDn.png',
   }
