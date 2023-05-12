@@ -4,9 +4,9 @@ import { Aggregator } from '../src/aggregator'
 import { generateClaimCotaTx } from '../src/service/cota'
 import { Claim, Service, FEE } from '../src'
 
-const TEST_ADDRESS = 'ckt1qyq0scej4vn0uka238m63azcel7cmcme7f2sxj5ska'
-const RECEIVER_PRIVATE_KEY = '0xf0d72b5e3a27e603efb304aa16608ba3e480cb1c6790bced80fb82c53a822cee'
-const RECEIVER_ADDRESS = 'ckt1qyqy6xew5q449zg5du7wdjhgrxschjkg3n2q8h5ycc'
+const TEST_ADDRESS = 'ckt1qyqp8ydxwz3p4vcmjwc2d7zqk4xhv707j80q4yrap2'
+const RECEIVER_PRIVATE_KEY = '0xb9449dc7e16f89bc2840f2e4c8a2fbbbd71f56aeca7f6e8d34d8b31192e5f93f'
+const RECEIVER_ADDRESS = 'ckt1qyqdvq39qrxcw6hpl0lp07y0qu2659ml7h5sfz8s6a'
 
 const secp256k1CellDep = (isMainnet: boolean): CKBComponents.CellDep => {
   if (isMainnet) {
@@ -32,8 +32,14 @@ const run = async () => {
   const isMainnet = false
 
   const service: Service = {
-    collector: new Collector({ ckbNodeUrl: 'http://localhost:8114', ckbIndexerUrl: 'http://localhost:8116' }),
-    aggregator: new Aggregator({ registryUrl: 'http://localhost:3050', cotaUrl: 'http://localhost:3030' }),
+    collector: new Collector({
+      ckbNodeUrl: 'https://testnet.ckbapp.dev/rpc',
+      ckbIndexerUrl: 'https://testnet.ckbapp.dev/rpc',
+    }),
+    aggregator: new Aggregator({
+      registryUrl: 'https://cota.nervina.dev/registry-aggregator',
+      cotaUrl: 'https://cota.nervina.dev/aggregator',
+    }),
   }
   const ckb = service.collector.getCkb()
   const claimLock = addressToScript(RECEIVER_ADDRESS)
@@ -41,8 +47,8 @@ const run = async () => {
 
   const claims: Claim[] = [
     {
-      cotaId: '0xc27328c95e27723d42770261d05355977aa5c89a',
-      tokenIndex: '0x0000000b',
+      cotaId: '0x003688bb1cba009d89dd3f1c8a6027a0c5851e86',
+      tokenIndex: '0x00000000',
     },
   ]
   let rawTx = await generateClaimCotaTx(service, claimLock, withdrawLock, claims, FEE, isMainnet)

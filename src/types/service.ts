@@ -18,10 +18,10 @@ export interface IssuerInfo {
 }
 
 export interface CotaAudio {
-  name: string,
-  url: string,
-  idx: number,
-  cotaId: Byte20,
+  name: string
+  url: string
+  idx: number
+  cotaId: Byte20
 }
 
 export interface CotaInfo {
@@ -29,7 +29,7 @@ export interface CotaInfo {
   image: string
   description?: string
   audio?: string
-  audios?: CotaAudio[],
+  audios?: CotaAudio[]
   video?: string
   model?: string
   characteristic?: [string, number][]

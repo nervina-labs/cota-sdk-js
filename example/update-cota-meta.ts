@@ -1,4 +1,4 @@
-import { addressToScript } from '@nervosnetwork/ckb-sdk-utils'
+import { addressToScript, scriptToHash, serializeScript } from '@nervosnetwork/ckb-sdk-utils'
 import { Collector } from '../src/collector'
 import { Aggregator } from '../src/aggregator'
 import { Service, FEE, CotaInfo } from '../src'
@@ -40,21 +40,47 @@ const run = async () => {
   const ckb = service.collector.getCkb()
   const cotaLock = addressToScript(TEST_ADDRESS)
 
+  console.log(`lock ${serializeScript(cotaLock)}`)
+
+  const cotaId = '0x1deb31f603652bf59ff5027b522e1d81c288b72f'
+
   const cotaInfo: CotaInfo = {
     name: 'Update First Step',
     description:
       'First step to Blockchain mass adoption. NFT platform launch memento.\n\n-- Nervina Labs & Lay2 Tech, 4/30/2021.',
     image: 'https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png',
+    audios: [
+      {
+        name: 'audio01',
+        url: 'https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png',
+        cotaId,
+        idx: 0,
+      },
+      {
+        name: 'audio02',
+        url: 'https://i.loli.net/2021/04/29/qyJNSE4iHAas7GL.png',
+        cotaId,
+        idx: 1,
+      },
+    ],
   }
-  const cotaId = '0x36cd7eb40416a61b1f90631b4ddfedd95aea6820'
 
   let rawTx = await generateCotaMetadataTx(service, cotaLock, cotaId, cotaInfo, FEE, isMainnet)
   rawTx.cellDeps.push(secp256k1CellDep(isMainnet))
 
-  const signedTx = ckb.signTransaction(TEST_PRIVATE_KEY)(rawTx)
-  console.log(JSON.stringify(signedTx))
-  let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
-  console.info(`Update cota metadata information tx has been sent with tx hash ${txHash}`)
+  console.log(
+    'lock',
+    serializeScript(
+      addressToScript(
+        'ckt1qrfrwcdnvssswdwpn3s9v8fp87emat306ctjwsm3nmlkjg8qyza2cqgqq9mxjf0qnyfusww65kapv2rc0qdm6sjpvvadd4hp',
+      ),
+    ),
+  )
+
+  // const signedTx = ckb.signTransaction(TEST_PRIVATE_KEY)(rawTx)
+  // console.log(JSON.stringify(signedTx))
+  // let txHash = await ckb.rpc.sendTransaction(signedTx, 'passthrough')
+  // console.info(`Update cota metadata information tx has been sent with tx hash ${txHash}`)
 }
 
 run()
