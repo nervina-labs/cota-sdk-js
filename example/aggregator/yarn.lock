@@ -27,10 +27,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@nervina-labs/cota-sdk@0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.9.0.tgz#76f4b40653ff1191b4aaf8991ca272b75197d6f0"
-  integrity sha512-1s9sgfShBAWguUUmyjCpBSwF8alreuCt4SIzBLR5MnahicgyCMAoeJHUPz6kcQZ9X63LmX5kA98jQQmJ57RE3w==
+"@nervina-labs/cota-sdk@0.9.1":
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/@nervina-labs/cota-sdk/-/cota-sdk-0.9.1.tgz#511a63af4a9aec1f9768d41ad33e29ecd480dadf"
+  integrity sha512-84H+397EfgpxXxj2M+BFYz0GX5cXLhVCrjnqKDbBMLgi62C7crYZ7mxfM2EOJayDxc1rBXPecEukTab+L3bQ2Q==
   dependencies:
     "@nervosnetwork/ckb-sdk-core" "^0.103.1"
     "@nervosnetwork/ckb-sdk-utils" "^0.103.1"
