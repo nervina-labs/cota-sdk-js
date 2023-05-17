@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@nervina-labs/cota-sdk": "0.9.1",
-    "@types/node": "18.16.8",
+    "@types/node": "18.16.12",
     "ts-node": "10.9.1",
     "tslib": "2.5.0",
     "typescript": "5.0.4"
