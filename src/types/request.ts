@@ -87,6 +87,19 @@ export interface TransferUpdateReq extends SmtReq {
   transfers: TransferUpdate[]
 }
 
+export interface SequentialTransfer {
+  withdrawalLockScript: Bytes
+  transferOutPoint: Byte24
+  cotaId: Byte20
+  tokenIndex: Byte4
+  toLockScript: Bytes
+}
+
+export interface SequentialTransferReq extends SmtReq {
+  lockScript: Bytes
+  transfers: SequentialTransfer[]
+}
+
 export interface GetCotaReq extends SmtReq {
   lockScript: Bytes
   page: number
