@@ -88,7 +88,7 @@ export interface TransferUpdateReq extends SmtReq {
 }
 
 export interface SequentialTransfer {
-  withdrawalLockScript: Bytes
+  withdrawalLockHash: Byte32
   transferOutPoint: Byte24
   cotaId: Byte20
   tokenIndex: Byte4

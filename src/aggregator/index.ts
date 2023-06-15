@@ -61,7 +61,6 @@ export class Aggregator {
       params: req ? toSnakeCase(req) : null,
     }
     const body = JSON.stringify(payload, null, '')
-    console.log(body)
     try {
       let response = (
         await axios({
