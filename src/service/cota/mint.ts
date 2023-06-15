@@ -39,7 +39,7 @@ export const generateMintCotaTx = async (
     }))
   }
 
-  console.log(withdrawals.map((withdrawal) => withdrawal.tokenIndex))
+  console.log(withdrawals.map(withdrawal => withdrawal.tokenIndex))
 
   const mintReq: MintReq = {
     lockScript: serializeScript(cotaLock),
