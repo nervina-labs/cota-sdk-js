@@ -65,6 +65,13 @@ export interface TransferUpdateResp extends SmtResp {
   blockNumber: bigint
 }
 
+export interface SequentialTransferResp extends SmtResp {
+  smtRootHash: Byte32
+  transferSmtEntry: Bytes
+  withdrawBlockHash: Byte32
+  blockNumber: bigint
+}
+
 export interface GetHoldResp extends SmtResp {
   total: number
   pageSize: number

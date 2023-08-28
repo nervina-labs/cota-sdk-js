@@ -17,6 +17,7 @@ import {
   GetIssuerInfoReq,
   GetCotaCountReq,
   ExtensionReq,
+  SequentialTransferReq,
 } from '../types/request'
 import {
   ClaimResp,
@@ -39,6 +40,7 @@ import {
   GetIssuerInfoResp,
   GetCotaCountResp,
   ExtensionResp,
+  SequentialTransferResp,
 } from '../types/response'
 import { Byte32 } from '../types/common'
 
@@ -59,7 +61,6 @@ export class Aggregator {
       params: req ? toSnakeCase(req) : null,
     }
     const body = JSON.stringify(payload, null, '')
-    console.log(body)
     try {
       let response = (
         await axios({
@@ -120,6 +121,10 @@ export class Aggregator {
 
   async generateTransferUpdateCotaSmt(transfer: TransferUpdateReq): Promise<TransferUpdateResp> {
     return (await this.baseRPC('generate_transfer_update_cota_smt', transfer)) as Promise<TransferUpdateResp>
+  }
+
+  async generateSequentialTransferCotaSmt(transfer: SequentialTransferReq): Promise<SequentialTransferResp> {
+    return (await this.baseRPC('generate_sequential_transfer_cota_smt', transfer)) as Promise<SequentialTransferResp>
   }
 
   async generateClaimUpdateCotaSmt(claim: ClaimUpdateReq): Promise<ClaimUpdateResp> {
