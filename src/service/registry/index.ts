@@ -78,7 +78,9 @@ export const generateRegisterCotaTx = async (
   const { smtRootHash, registrySmtEntry } = await service.aggregator.generateRegisterCotaSmt(lockHashes)
   const registryCellData = `0x02${smtRootHash}`
 
-  const outputsData = outputs.map((_, i) => (i === 0 ? registryCellData : i !== outputs.length - 1 ? '0x02' : '0x'))
+  const outputsData = outputs.map((_, i) =>
+    i === 0 ? registryCellData : i !== outputs.length - 1 ? `0x02${'00'.repeat(32)}` : '0x',
+  )
 
   const cellDeps = [getAlwaysSuccessCellDep(isMainnet), getCotaCellDep(isMainnet)]
 
