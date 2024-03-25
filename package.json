@@ -24,7 +24,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@nervosnetwork/ckb-sdk-core": "^0.103.1",
+    "@nervosnetwork/ckb-sdk-core": "^0.109.0",
     "@nervosnetwork/ckb-sdk-utils": "^0.103.1",
     "@nervosnetwork/ckb-types": "^0.103.1",
     "axios": "^1.2.1",
