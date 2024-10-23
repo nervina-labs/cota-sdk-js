@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/crypto-js": "4.2.1",
-    "@types/node": "18.19.2",
+    "@types/node": "20.17.0",
     "@typescript-eslint/parser": "5.62.0",
     "@babel/eslint-parser": "7.23.3",
     "eslint": "8.40.0",
