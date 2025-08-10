@@ -26,7 +26,7 @@
   "dependencies": {
     "@nervosnetwork/ckb-sdk-core": "^0.103.1",
     "@nervosnetwork/ckb-sdk-utils": "^0.103.1",
-    "@nervosnetwork/ckb-types": "^0.103.1",
+    "@nervosnetwork/ckb-types": "^0.109.0",
     "axios": "^1.2.1",
     "camelcase-keys": "7.0.2",
     "convert-keys": "1.3.4"
